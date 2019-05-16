@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/splash_navigation_graph"
+            app:startDestination="@id/splashFragment">
+
+    <fragment android:id="@+id/splashFragment"
+              android:name="com.upsa.mimo.placesfinder.splash.SplashFragment"
+              android:label="SplashFragment"
+              tools:layout="@layout/fragment_splash">
+        <action android:id="@+id/action_splashFragment_to_baseActivity"
+                app:destination="@id/baseActivity"/>
+    </fragment>
+
+
+    <activity android:id="@+id/baseActivity"
+              android:name="com.upsa.mimo.placesfinder.app.BaseActivity"
+              android:label="activity_main"
+              tools:layout="@layout/activity_main"/>
+
+</navigation>
