@@ -11,7 +11,7 @@ class App : Application(){
     val injector by lazy { Injector(this) }
 }
 
-val FragmentActivity.injector: Injector
+val FragmentActivity.injector : Injector
 get(){
     val app = application as? App ?: throw IllegalStateException("Application must implement App")
     return app.injector

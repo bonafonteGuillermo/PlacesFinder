@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.upsa.mimo.placesfinder.R
 import com.upsa.mimo.placesfinder.app.injector
-import com.upsa.mimo.placesfinder.placedetail.IPlaceDetailView
 
 class PlaceDetailFragment : Fragment(), IPlaceDetailView {
 

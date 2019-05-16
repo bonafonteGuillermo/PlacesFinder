@@ -9,13 +9,12 @@
               android:label="SplashFragment"
               tools:layout="@layout/fragment_splash">
         <action android:id="@+id/action_splashFragment_to_baseActivity"
-                app:destination="@id/baseActivity"/>
+                app:destination="@id/baseActivity"
+                app:enterAnim="@anim/slide_in_down"/>
     </fragment>
-
 
     <activity android:id="@+id/baseActivity"
               android:name="com.upsa.mimo.placesfinder.app.BaseActivity"
               android:label="activity_main"
               tools:layout="@layout/activity_main"/>
-
 </navigation>

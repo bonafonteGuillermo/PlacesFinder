@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.upsa.mimo.placesfinder.R
 
-
 /**
  *
  * Created by Guillermo Bonafonte Criado on 16/05/2019.
