@@ -2,6 +2,7 @@ package com.upsa.mimo.placesfinder.splash
 
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.upsa.mimo.placesfinder.R
 
@@ -11,8 +12,8 @@ import com.upsa.mimo.placesfinder.R
  */
 class SplashActivity : AppCompatActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
     }
 }

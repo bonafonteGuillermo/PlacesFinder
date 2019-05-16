@@ -8,9 +8,7 @@ import androidx.fragment.app.FragmentActivity
  * Created by Guillermo Bonafonte Criado on 16/05/2019.
  */
 class App : Application(){
-
     val injector by lazy { Injector(this) }
-
 }
 
 val FragmentActivity.injector: Injector

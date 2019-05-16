@@ -9,8 +9,8 @@
     <fragment
             android:id="@+id/splash_nav_host_fragment"
             android:name="androidx.navigation.fragment.NavHostFragment"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             app:navGraph="@navigation/splash_navigation_graph"
             app:defaultNavHost="true"
             app:layout_constraintBottom_toBottomOf="parent"

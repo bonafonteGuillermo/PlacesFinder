@@ -17,7 +17,6 @@ class SplashFragment: Fragment() {
 
     override fun onStart() {
         super.onStart()
-
-        Handler().postDelayed({ router.navigateToMainScreen() }, 1500)
+        Handler().postDelayed({ router.navigateToBaseActivity() }, 2000)
     }
 }
