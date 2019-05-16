@@ -30,6 +30,7 @@ dependencies {
 
     //Design
     implementation 'com.google.android.material:material:1.0.0'
+    implementation 'com.github.ybq:Android-SpinKit:1.2.0'
 
     //Navigation
     implementation 'android.arch.navigation:navigation-ui-ktx:1.0.0'

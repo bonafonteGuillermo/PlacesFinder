@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimary">#BB86FC</color>
+    <color name="colorSecondary">#03DAC5</color>
+    <color name="colorPrimaryDark">#28272F</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="white">#ffffff</color>
+    <color name="white">#FFFFFF</color>
+    <color name="background">#383740</color>
+    <color name="bottom_nav_view_background">#26282F</color>
+    <color name="disabled_icon">#ADADB2</color>
+
 </resources>
