@@ -19,9 +19,9 @@ class SplashFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Handler().postDelayed({ router.navigateToBaseActivity() }, 5000)
+        Handler().postDelayed({ router.navigateToBaseActivity() }, 2000)
         loading.animate().apply {
-            duration = 500
+            duration = 1000
         }
     }
 
