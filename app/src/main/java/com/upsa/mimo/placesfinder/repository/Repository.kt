@@ -1,5 +1,6 @@
 package com.upsa.mimo.placesfinder.repository
 
+import com.upsa.mimo.placesfinder.database.AppDatabase
 import com.upsa.mimo.placesfinder.repository.api.Api
 import com.upsa.mimo.placesfinder.repository.preferences.SharedPrefs
 
@@ -9,6 +10,7 @@ import com.upsa.mimo.placesfinder.repository.preferences.SharedPrefs
  */
 class Repository(
     private val api: Api,
+    private val localStorage : AppDatabase,
     private val prefs: SharedPrefs
 ) : IRepository {
 

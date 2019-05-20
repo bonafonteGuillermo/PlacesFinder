@@ -5,5 +5,6 @@ import com.upsa.mimo.placesfinder.app.Injector
 class RepositoryInjector(private val injector: Injector) {
     fun getInstanceRepository() = Repository(
         injector.apiInjector.providesApi(),
+        injector.databaseInjector.providesAppDatabase(),
         injector.preferencesInjector.providesSharedPreferences())
 }
