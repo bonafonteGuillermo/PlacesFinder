@@ -1,4 +1,4 @@
-package com.upsa.mimo.placesfinder.repository
+package com.upsa.mimo.placesfinder.repository.preferences
 
 import android.content.Context
 import android.content.SharedPreferences
