@@ -95,7 +95,4 @@ class LocationProviderImplementation(private val fragment: Fragment) : ILocation
     override fun permissionsGranted() {
         startLocationUpdates()
     }
-
-
-
 }
