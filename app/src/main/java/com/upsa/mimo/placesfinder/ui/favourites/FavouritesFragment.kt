@@ -21,6 +21,6 @@ class FavouritesFragment : Fragment(), IFavouritesView {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         val activityInjector = checkNotNull(activity)
-        presenter = activityInjector.injector.favouritesInjector.getInstancePresenter(this)
+        presenter = activityInjector.injector.favouritesInjector.providesFavouritesPresenter(this)
     }
 }

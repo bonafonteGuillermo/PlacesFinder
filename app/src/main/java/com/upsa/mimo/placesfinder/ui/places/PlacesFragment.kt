@@ -25,7 +25,7 @@ class PlacesFragment : Fragment(), IPlacesView {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         val activityInjector = checkNotNull(activity)
-        presenter = activityInjector.injector.placesInjector.getInstancePresenter(this)
+        presenter = activityInjector.injector.placesInjector.providesPlacesPresenter(this)
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
@@ -38,7 +38,6 @@ class PlacesFragment : Fragment(), IPlacesView {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         when(requestCode) {
-
             REQUEST_CHECK_SETTINGS ->
                 when(resultCode){
                     Activity.RESULT_OK -> presenter.permissionsGranted()

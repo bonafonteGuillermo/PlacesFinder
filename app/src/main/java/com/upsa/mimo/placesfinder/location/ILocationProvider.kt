@@ -4,6 +4,6 @@ import android.location.Location
 import io.reactivex.Observable
 
 interface ILocationProvider {
-    fun getMyLocation() : Observable<Location>
+    fun getLocation() : Observable<Location>
     fun permissionsGranted()
 }

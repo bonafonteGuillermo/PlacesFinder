@@ -20,6 +20,6 @@ class PlaceDetailFragment : Fragment(), IPlaceDetailView {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         val activityInjector = checkNotNull(activity)
-        presenter = activityInjector.injector.placeDetailInjector.getInstancePresenter(this)
+        presenter = activityInjector.injector.placeDetailInjector.providesPlaceDetailPresenter(this)
     }
 }

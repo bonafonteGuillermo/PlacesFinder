@@ -1,10 +1,12 @@
 package com.upsa.mimo.placesfinder.ui.places
 
 import android.location.Location
-import android.location.LocationProvider
+import android.util.Log
 import com.upsa.mimo.placesfinder.location.ILocationProvider
 import com.upsa.mimo.placesfinder.repository.IRepository
 import com.upsa.mimo.placesfinder.rx.AppSchedulers
+import com.upsa.mimo.placesfinder.utils.getLocationQueryParam
+import io.reactivex.disposables.Disposable
 
 /**
  *
@@ -21,26 +23,28 @@ class PlacesPresenter(
         requestLocation()
     }
 
-    private fun requestLocation(){
-        val observable = locationProvider.getMyLocation()
+    private fun requestLocation() {
+        val observable = locationProvider.getLocation()
             .subscribeOn(schedulers.internet())
             .observeOn(schedulers.androidThread())
             .subscribe(
-                { location -> getNearByPlaces(location)},
-                {}
+                { location -> getNearByPlaces(location) },
+                { Log.d("->", it.toString()) }
             )
-
-
-
-    }
-
-    private fun getNearByPlaces(location: Location) {
-
     }
 
     override fun permissionsGranted() {
         locationProvider.permissionsGranted()
     }
 
+    private fun getNearByPlaces(location: Location) : Disposable {
+        return repository.getNearByPlaces(location)
+            .subscribeOn(schedulers.internet())
+            .observeOn(schedulers.androidThread())
+            .subscribe(
+                { it.forEach { place -> Log.d("->", place.toString()) } },
+                { Log.d("->", it.toString()) }
+            )
+    }
 
 }
