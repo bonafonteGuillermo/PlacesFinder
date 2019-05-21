@@ -1,16 +1,16 @@
-package com.upsa.mimo.placesfinder.favourites
+package com.upsa.mimo.placesfinder.ui.places
 
 import com.upsa.mimo.placesfinder.repository.IRepository
 import com.upsa.mimo.placesfinder.rx.AppSchedulers
+
 /**
  *
  * Created by Guillermo Bonafonte Criado on 16/05/2019.
  */
-class FavouritesPresenter(
-    override var view: IFavouritesView,
+class PlacesPresenter(
+    override var view: IPlacesView,
     private val repository: IRepository,
     private val schedulers: AppSchedulers
-) : IFavouritesPresenter {
-
+) : IPlacesPresenter {
 
 }

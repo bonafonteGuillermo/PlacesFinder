@@ -1,4 +1,4 @@
-package com.upsa.mimo.placesfinder.splash
+package com.upsa.mimo.placesfinder.ui.splash
 
 import androidx.navigation.NavController
 

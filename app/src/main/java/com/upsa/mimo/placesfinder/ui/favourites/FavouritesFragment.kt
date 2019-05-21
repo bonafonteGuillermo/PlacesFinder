@@ -1,4 +1,4 @@
-package com.upsa.mimo.placesfinder.favourites
+package com.upsa.mimo.placesfinder.ui.favourites
 
 import android.os.Bundle
 import android.view.LayoutInflater

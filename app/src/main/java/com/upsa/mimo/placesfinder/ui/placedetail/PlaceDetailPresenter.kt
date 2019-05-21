@@ -1,4 +1,4 @@
-package com.upsa.mimo.placesfinder.placedetail
+package com.upsa.mimo.placesfinder.ui.placedetail
 
 import com.upsa.mimo.placesfinder.repository.IRepository
 

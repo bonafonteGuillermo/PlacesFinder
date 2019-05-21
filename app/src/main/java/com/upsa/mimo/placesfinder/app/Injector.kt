@@ -2,9 +2,9 @@ package com.upsa.mimo.placesfinder.app
 
 import android.content.Context
 import com.upsa.mimo.placesfinder.database.AppDatabaseInjector
-import com.upsa.mimo.placesfinder.favourites.FavouritesInjector
-import com.upsa.mimo.placesfinder.placedetail.PlaceDetailInjector
-import com.upsa.mimo.placesfinder.places.PlacesInjector
+import com.upsa.mimo.placesfinder.ui.favourites.FavouritesInjector
+import com.upsa.mimo.placesfinder.ui.placedetail.PlaceDetailInjector
+import com.upsa.mimo.placesfinder.ui.places.PlacesInjector
 import com.upsa.mimo.placesfinder.repository.RepositoryInjector
 import com.upsa.mimo.placesfinder.repository.api.ApiInjector
 import com.upsa.mimo.placesfinder.repository.preferences.SharedPrefsInjector

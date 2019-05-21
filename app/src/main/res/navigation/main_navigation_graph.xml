@@ -5,15 +5,15 @@
             app:startDestination="@id/placesFragment">
 
     <fragment android:id="@+id/placesFragment"
-              android:name="com.upsa.mimo.placesfinder.places.PlacesFragment"
+              android:name="com.upsa.mimo.placesfinder.ui.places.PlacesFragment"
               android:label="PlacesFragment"
               tools:layout="@layout/fragment_places"/>
     <fragment android:id="@+id/placeDetailFragment"
-              android:name="com.upsa.mimo.placesfinder.placedetail.PlaceDetailFragment"
+              android:name="com.upsa.mimo.placesfinder.ui.placedetail.PlaceDetailFragment"
               android:label="PlaceDetailFragment"
               tools:layout="@layout/fragment_place_detail"/>
     <fragment android:id="@+id/favouritesFragment"
-              android:name="com.upsa.mimo.placesfinder.favourites.FavouritesFragment"
+              android:name="com.upsa.mimo.placesfinder.ui.favourites.FavouritesFragment"
               android:label="FavouritesFragment"
               tools:layout="@layout/fragment_favourites"/>
 </navigation>

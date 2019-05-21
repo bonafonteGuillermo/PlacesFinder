@@ -1,4 +1,4 @@
-package com.upsa.mimo.placesfinder.places
+package com.upsa.mimo.placesfinder.ui.placedetail
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,18 +8,18 @@ import androidx.fragment.app.Fragment
 import com.upsa.mimo.placesfinder.R
 import com.upsa.mimo.placesfinder.app.injector
 
-class PlacesFragment : Fragment(), IPlacesView {
+class PlaceDetailFragment : Fragment(), IPlaceDetailView {
 
-    private lateinit var presenter: IPlacesPresenter
+    private lateinit var presenter: IPlaceDetailPresenter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_places, container, false)
+        return inflater.inflate(R.layout.fragment_place_detail, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         val activityInjector = checkNotNull(activity)
-        presenter = activityInjector.injector.placesInjector.getInstancePresenter(this)
+        presenter = activityInjector.injector.placeDetailInjector.getInstancePresenter(this)
     }
 }

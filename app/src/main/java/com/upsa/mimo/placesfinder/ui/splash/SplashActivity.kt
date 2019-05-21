@@ -1,8 +1,6 @@
-package com.upsa.mimo.placesfinder.splash
+package com.upsa.mimo.placesfinder.ui.splash
 
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.upsa.mimo.placesfinder.R
 
