@@ -21,7 +21,7 @@ android {
         }
     }
     buildTypes.each {
-        it.buildConfigField 'String', 'GoogleSecAPIKEY', GoolgeAPIKey
+        it.buildConfigField 'String', 'GoogleSecAPIKEY', GoogleAPIKey
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8

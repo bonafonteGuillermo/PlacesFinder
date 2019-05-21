@@ -1,5 +1,6 @@
 package com.upsa.mimo.placesfinder.ui.places
 
+import androidx.fragment.app.Fragment
 import com.upsa.mimo.placesfinder.app.Injector
 /**
  *
@@ -10,6 +11,7 @@ class PlacesInjector(private val injector: Injector) {
         PlacesPresenter(
             view,
             injector.repositoryInjector.getInstanceRepository(),
-            injector.rxInjector.getInstanceRx()
+            injector.rxInjector.getInstanceRx(),
+            injector.locationInjector.getInstanceLocationProvider(view as Fragment)
         )
 }

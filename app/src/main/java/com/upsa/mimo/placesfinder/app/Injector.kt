@@ -2,6 +2,7 @@ package com.upsa.mimo.placesfinder.app
 
 import android.content.Context
 import com.upsa.mimo.placesfinder.database.AppDatabaseInjector
+import com.upsa.mimo.placesfinder.location.LocationInjector
 import com.upsa.mimo.placesfinder.ui.favourites.FavouritesInjector
 import com.upsa.mimo.placesfinder.ui.placedetail.PlaceDetailInjector
 import com.upsa.mimo.placesfinder.ui.places.PlacesInjector
@@ -23,4 +24,5 @@ class Injector(private val context: Context) {
     val repositoryInjector by lazy { RepositoryInjector(this) }
     val favouritesInjector by lazy { FavouritesInjector(this) }
     val placeDetailInjector by lazy { PlaceDetailInjector(this) }
+    val locationInjector by lazy { LocationInjector() }
 }

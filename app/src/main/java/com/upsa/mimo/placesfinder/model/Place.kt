@@ -1,18 +1,19 @@
 package com.upsa.mimo.placesfinder.model
 
 import android.os.Parcelable
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 @Entity(tableName = "place")
+@TypeConverters(PlaceConverter::class)
 data class Place(
 
     @PrimaryKey
-    val id: String?,
+    val id: String,
 
     val name: String?,
 
@@ -35,4 +36,13 @@ data class Place(
     val vicinity: String?,
 
     var isFavourite: Boolean = false
-): Parcelable
+) : Parcelable
+
+class PlaceConverter {
+    @TypeConverter
+    fun fromList(types: List<String>?): String = GsonBuilder().create().toJson(types)
+
+    @TypeConverter
+    fun fromJson(json: String?): List<String> = Gson().fromJson(json, Array<String>::class.java).toList()
+
+}

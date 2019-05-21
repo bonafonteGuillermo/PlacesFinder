@@ -1,5 +1,7 @@
 package com.upsa.mimo.placesfinder.ui.places
 
+import android.location.LocationProvider
+import com.upsa.mimo.placesfinder.location.ILocationProvider
 import com.upsa.mimo.placesfinder.repository.IRepository
 import com.upsa.mimo.placesfinder.rx.AppSchedulers
 
@@ -10,7 +12,8 @@ import com.upsa.mimo.placesfinder.rx.AppSchedulers
 class PlacesPresenter(
     override var view: IPlacesView,
     private val repository: IRepository,
-    private val schedulers: AppSchedulers
+    private val schedulers: AppSchedulers,
+    private val locationProvider: ILocationProvider
 ) : IPlacesPresenter {
 
 }
