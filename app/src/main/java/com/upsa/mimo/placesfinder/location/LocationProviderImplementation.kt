@@ -90,8 +90,7 @@ class LocationProviderImplementation(private val fragment: Fragment) : ILocation
     private fun requestEnableGPS(e: Exception) {
         if (e is ResolvableApiException) {
             try {
-                checkNotNull(fragment.activity)
-                    .startIntentSenderForResult(
+                fragment.startIntentSenderForResult(
                         e.resolution.intentSender, REQUEST_CHECK_SETTINGS, null, 0, 0, 0, null
                     )
             } catch (sendEx: IntentSender.SendIntentException) {

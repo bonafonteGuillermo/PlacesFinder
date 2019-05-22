@@ -46,5 +46,4 @@ class PlacesPresenter(
                 { Log.d("->", it.toString()) }
             )
     }
-
 }

@@ -7,10 +7,13 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 class ApiInjector {
-    fun providesApi(): Api = Retrofit.Builder().client(OkHttpClient())
-        .baseUrl(Configuration().baseUrl)
-        .addConverterFactory(GsonConverterFactory.create())
-        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-        .build()
-        .create(Api::class.java)
+    fun providesApi(client: OkHttpClient, gson: GsonConverterFactory, rxAdapter: RxJava2CallAdapterFactory): Api {
+        return Retrofit.Builder()
+            .client(client)
+            .baseUrl(Configuration().baseUrl)
+            .addConverterFactory(gson)
+            .addCallAdapterFactory(rxAdapter)
+            .build()
+            .create(Api::class.java)
+    }
 }
