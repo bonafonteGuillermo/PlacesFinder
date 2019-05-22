@@ -15,11 +15,20 @@ import io.reactivex.subjects.PublishSubject
  *
  * Created by Guillermo Bonafonte Criado on 16/05/2019.
  */
-class Repository(
+class Repository private constructor(
     private val api: Api,
     private val localStorage: AppDatabase,
     private val prefs: SharedPrefs
 ) : IRepository {
+
+    companion object {
+        @Volatile private var INSTANCE: Repository? = null
+        operator fun invoke(api: Api, localStorage: AppDatabase, prefs: SharedPrefs): IRepository =
+            INSTANCE ?: synchronized(this) {
+                INSTANCE ?: Repository(api, localStorage, prefs).also { INSTANCE = it }
+            }
+    }
+
     override fun getNearByPlaces(location: Location): Observable<List<Place>> {
         val publisher = PublishSubject.create<List<Place>>()
         val results =
@@ -33,11 +42,8 @@ class Repository(
                     publisher.onError(Throwable(it.status.toString()))
                 }
             },
-            {
-                publisher.onError(it)
-            }
+            { publisher.onError(it) }
         )
         return publisher
     }
-
 }

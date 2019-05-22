@@ -1,5 +1,5 @@
 package com.upsa.mimo.placesfinder.rx
 
-class RxInjector {
+object RxInjector {
     fun providesRx() = AppSchedulers()
 }

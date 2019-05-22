@@ -13,6 +13,7 @@ class RepositoryInjector(private val injector: Injector, private val context: Co
             injector.networkInjector.provideGsonClient(),
             injector.networkInjector.provideRxAdapter()
         ),
-        injector.databaseInjector.providesAppDatabase(),
-        injector.preferencesInjector.providesSharedPreferences())
+        injector.databaseInjector.providesAppDatabase(context),
+        injector.preferencesInjector.providesSharedPreferences(context)
+    )
 }

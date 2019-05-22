@@ -9,7 +9,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
 
-class NetworkInjector {
+object NetworkInjector {
     fun provideHttpClient(logger: HttpLoggingInterceptor, cache: Cache): OkHttpClient {
         return OkHttpClient().newBuilder()
             .addInterceptor(logger)

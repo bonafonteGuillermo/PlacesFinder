@@ -3,11 +3,22 @@ package com.upsa.mimo.placesfinder.database
 import android.content.Context
 import androidx.room.Room
 
-class AppDatabaseInjector(private val context: Context) {
-    fun providesAppDatabase(): AppDatabase =
+object AppDatabaseInjector {
+
+    @Volatile
+    private var INSTANCE: AppDatabase? = null
+
+    fun providesAppDatabase(context: Context): AppDatabase =
+        INSTANCE ?: synchronized(this) {
+            INSTANCE ?: buildAppDatabase(context).also { INSTANCE = it }
+        }
+
+    private fun buildAppDatabase(context: Context): AppDatabase =
         Room.databaseBuilder(
             context,
             AppDatabase::class.java,
             "my-app-db"
         ).build()
+
+
 }
