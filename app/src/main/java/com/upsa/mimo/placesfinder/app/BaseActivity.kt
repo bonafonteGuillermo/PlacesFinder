@@ -1,6 +1,7 @@
 package com.upsa.mimo.placesfinder.app
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -21,5 +22,7 @@ class BaseActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         bottom_nav_view.setupWithNavController(navController)
+
+        Log.d("->", "BaseActivity_onCreate")
     }
 }

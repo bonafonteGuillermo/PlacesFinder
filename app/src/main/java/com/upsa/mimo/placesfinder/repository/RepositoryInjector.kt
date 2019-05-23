@@ -5,7 +5,7 @@ import com.upsa.mimo.placesfinder.app.Injector
 
 class RepositoryInjector(private val injector: Injector, private val context: Context) {
     fun providesRepository() = Repository(
-        injector.apiInjector.providesApi(
+        api = injector.apiInjector.providesApiClient(
             injector.networkInjector.provideHttpClient(
                 injector.networkInjector.provideLoggingInterceptor(),
                 injector.networkInjector.provideCache(injector.networkInjector.provideCacheFile(context))
@@ -13,7 +13,7 @@ class RepositoryInjector(private val injector: Injector, private val context: Co
             injector.networkInjector.provideGsonClient(),
             injector.networkInjector.provideRxAdapter()
         ),
-        injector.databaseInjector.providesAppDatabase(context),
-        injector.preferencesInjector.providesSharedPreferences(context)
+        localStorage = injector.databaseInjector.providesAppDatabase(context),
+        prefs = injector.preferencesInjector.providesSharedPreferences(context)
     )
 }

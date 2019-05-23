@@ -8,6 +8,7 @@ object AppDatabaseInjector {
     @Volatile
     private var INSTANCE: AppDatabase? = null
 
+    //TODO move to appdatabase
     fun providesAppDatabase(context: Context): AppDatabase =
         INSTANCE ?: synchronized(this) {
             INSTANCE ?: buildAppDatabase(context).also { INSTANCE = it }

@@ -6,7 +6,8 @@
             android:enabled="true"
             android:icon="@drawable/ic_action_places"
             android:title="@string/activity_main_bottom_navigation_view_places"
-            app:showAsAction="ifRoom" />
+            app:showAsAction="ifRoom"
+            />
     <item
             android:id="@id/favouritesFragment"
             android:enabled="true"
