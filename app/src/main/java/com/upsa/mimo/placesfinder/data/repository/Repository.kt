@@ -1,12 +1,12 @@
-package com.upsa.mimo.placesfinder.repository
+package com.upsa.mimo.placesfinder.data.repository
 
 import android.location.Location
 import com.upsa.mimo.placesfinder.BuildConfig
-import com.upsa.mimo.placesfinder.database.AppDatabase
+import com.upsa.mimo.placesfinder.data.database.AppDatabase
 import com.upsa.mimo.placesfinder.model.Place
 import com.upsa.mimo.placesfinder.model.Status
-import com.upsa.mimo.placesfinder.repository.api.Api
-import com.upsa.mimo.placesfinder.repository.preferences.SharedPrefs
+import com.upsa.mimo.placesfinder.data.api.Api
+import com.upsa.mimo.placesfinder.data.preferences.SharedPrefs
 import com.upsa.mimo.placesfinder.utils.getLocationQueryParam
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
@@ -25,7 +25,12 @@ class Repository private constructor(
         @Volatile private var INSTANCE: Repository? = null
         operator fun invoke(api: Api, localStorage: AppDatabase, prefs: SharedPrefs): IRepository =
             INSTANCE ?: synchronized(this) {
-                INSTANCE ?: Repository(api, localStorage, prefs).also { INSTANCE = it }
+                INSTANCE
+                    ?: Repository(
+                        api,
+                        localStorage,
+                        prefs
+                    ).also { INSTANCE = it }
             }
     }
 

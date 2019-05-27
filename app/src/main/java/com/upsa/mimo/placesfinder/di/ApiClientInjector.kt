@@ -1,5 +1,6 @@
-package com.upsa.mimo.placesfinder.repository.api
+package com.upsa.mimo.placesfinder.di
 
+import com.upsa.mimo.placesfinder.data.api.Api
 import com.upsa.mimo.placesfinder.utils.Configuration
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

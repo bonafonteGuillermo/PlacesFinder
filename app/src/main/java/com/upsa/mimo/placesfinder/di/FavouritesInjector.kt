@@ -1,6 +1,7 @@
-package com.upsa.mimo.placesfinder.ui.favourites
+package com.upsa.mimo.placesfinder.di
 
-import com.upsa.mimo.placesfinder.app.Injector
+import com.upsa.mimo.placesfinder.ui.favourites.FavouritesPresenter
+import com.upsa.mimo.placesfinder.ui.favourites.IFavouritesView
 
 /**
  *
@@ -11,6 +12,6 @@ class FavouritesInjector(private val injector: Injector) {
         FavouritesPresenter(
             view,
             injector.repositoryInjector.providesRepository(),
-            injector.rxInjector.providesRx()
+            RxInjector.providesRx()
         )
 }

@@ -1,4 +1,4 @@
-package com.upsa.mimo.placesfinder.repository.api.network
+package com.upsa.mimo.placesfinder.di
 
 import android.content.Context
 import com.upsa.mimo.placesfinder.rx.AppSchedulers

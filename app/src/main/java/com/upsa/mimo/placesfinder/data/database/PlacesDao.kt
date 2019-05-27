@@ -1,4 +1,4 @@
-package com.upsa.mimo.placesfinder.database
+package com.upsa.mimo.placesfinder.data.database
 
 import androidx.room.*
 import com.upsa.mimo.placesfinder.model.Place

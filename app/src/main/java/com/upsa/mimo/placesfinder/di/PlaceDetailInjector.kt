@@ -1,6 +1,7 @@
-package com.upsa.mimo.placesfinder.ui.placedetail
+package com.upsa.mimo.placesfinder.di
 
-import com.upsa.mimo.placesfinder.app.Injector
+import com.upsa.mimo.placesfinder.ui.placedetail.IPlaceDetailView
+import com.upsa.mimo.placesfinder.ui.placedetail.PlaceDetailPresenter
 
 /**
  *

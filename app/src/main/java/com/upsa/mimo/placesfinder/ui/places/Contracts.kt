@@ -10,6 +10,7 @@ import com.upsa.mimo.placesfinder.app.BaseView
  */
 interface IPlacesPresenter : BasePresenter<IPlacesView> {
     fun permissionsGranted()
+    fun onDestroy()
 }
 
 interface IPlacesView : BaseView

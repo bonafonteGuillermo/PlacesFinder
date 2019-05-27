@@ -3,7 +3,7 @@ package com.upsa.mimo.placesfinder.ui.places
 import android.location.Location
 import android.util.Log
 import com.upsa.mimo.placesfinder.location.ILocationProvider
-import com.upsa.mimo.placesfinder.repository.IRepository
+import com.upsa.mimo.placesfinder.data.repository.IRepository
 import com.upsa.mimo.placesfinder.rx.AppSchedulers
 import com.upsa.mimo.placesfinder.utils.getLocationQueryParam
 import io.reactivex.disposables.Disposable
@@ -13,7 +13,7 @@ import io.reactivex.disposables.Disposable
  * Created by Guillermo Bonafonte Criado on 16/05/2019.
  */
 class PlacesPresenter(
-    override var view: IPlacesView,
+    override var view: IPlacesView?,
     private val repository: IRepository,
     private val schedulers: AppSchedulers,
     private val locationProvider: ILocationProvider
@@ -29,7 +29,9 @@ class PlacesPresenter(
             .observeOn(schedulers.androidThread())
             .subscribe(
                 { location -> getNearByPlaces(location) },
-                { Log.d("->", it.toString()) }
+                {
+                    //TODO show error
+                    Log.d("->", it.toString()) }
             )
     }
 
@@ -43,7 +45,14 @@ class PlacesPresenter(
             .observeOn(schedulers.androidThread())
             .subscribe(
                 { it.forEach { place -> Log.d("->", place.toString()) } },
-                { Log.d("->", it.toString()) }
+                {
+                    //TODO show error
+                    Log.d("->", it.toString())
+                }
             )
+    }
+
+    override fun onDestroy(){
+        view = null
     }
 }

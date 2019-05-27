@@ -1,4 +1,4 @@
-package com.upsa.mimo.placesfinder.repository.api
+package com.upsa.mimo.placesfinder.data.api
 
 import com.upsa.mimo.placesfinder.model.PlacesResults
 import io.reactivex.Observable

@@ -21,40 +21,13 @@ class PlacesFragment : Fragment(), IPlacesView {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        Log.d("->", "PlacesFragment_onCreateView")
         return inflater.inflate(R.layout.fragment_places, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        Log.d("->", "PlacesFragment_onActivityCreated")
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         val activityInjector = checkNotNull(activity)
         presenter = activityInjector.injector.placesInjector.providesPlacesPresenter(this)
-    }
-
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
-        Log.d("->", "PlacesFragment_onAttach")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.d("->", "PlacesFragment_onResume")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.d("->", "PlacesFragment_onPause")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.d("->", "PlacesFragment_onStop")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d("->", "PlacesFragment_onDestroy")
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
@@ -72,5 +45,10 @@ class PlacesFragment : Fragment(), IPlacesView {
                     Activity.RESULT_OK -> presenter.permissionsGranted()
                 }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onDestroy()
     }
 }

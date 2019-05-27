@@ -2,6 +2,7 @@ package com.upsa.mimo.placesfinder.app
 
 import android.app.Application
 import androidx.fragment.app.FragmentActivity
+import com.upsa.mimo.placesfinder.di.Injector
 
 /**
  *

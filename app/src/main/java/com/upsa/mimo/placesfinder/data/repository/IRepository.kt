@@ -1,4 +1,4 @@
-package com.upsa.mimo.placesfinder.repository
+package com.upsa.mimo.placesfinder.data.repository
 
 import android.location.Location
 import com.upsa.mimo.placesfinder.model.Place
