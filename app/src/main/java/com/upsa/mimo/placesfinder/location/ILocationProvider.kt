@@ -1,9 +1,9 @@
 package com.upsa.mimo.placesfinder.location
 
 import android.location.Location
-import io.reactivex.Observable
+import io.reactivex.Single
 
 interface ILocationProvider {
-    fun getLocation() : Observable<Location>
+    fun getLocation() : Single<Location>
     fun permissionsGranted()
 }

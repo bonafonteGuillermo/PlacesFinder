@@ -9,7 +9,9 @@ import com.upsa.mimo.placesfinder.data.api.Api
 import com.upsa.mimo.placesfinder.data.preferences.SharedPrefs
 import com.upsa.mimo.placesfinder.utils.getLocationQueryParam
 import io.reactivex.Observable
+import io.reactivex.Single
 import io.reactivex.subjects.PublishSubject
+import io.reactivex.subjects.SingleSubject
 
 /**
  *
@@ -34,15 +36,15 @@ class Repository private constructor(
             }
     }
 
-    override fun getNearByPlaces(location: Location): Observable<List<Place>> {
-        val publisher = PublishSubject.create<List<Place>>()
+    override fun getNearByPlaces(location: Location): Single<List<Place>> {
+        val publisher = SingleSubject.create<List<Place>>()
         val results =
             api.getPlaces(location.getLocationQueryParam(), "1500", "restaurants", BuildConfig.GoogleSecAPIKEY)
 
         val disposable = results.subscribe(
             {
                 if (it.status == Status.OK) {
-                    publisher.onNext(it.results)
+                    publisher.onSuccess(it.results)
                 } else {
                     publisher.onError(Throwable(it.status.toString()))
                 }

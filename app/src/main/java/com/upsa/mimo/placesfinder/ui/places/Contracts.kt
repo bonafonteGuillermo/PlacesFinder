@@ -9,8 +9,13 @@ import com.upsa.mimo.placesfinder.app.BaseView
  * Created by Guillermo Bonafonte Criado on 16/05/2019.
  */
 interface IPlacesPresenter : BasePresenter<IPlacesView> {
+    fun requestLocation()
     fun permissionsGranted()
     fun onDestroy()
 }
 
-interface IPlacesView : BaseView
+interface IPlacesView : BaseView {
+    fun showLoading()
+    fun hideLoading()
+    fun showErrorDialog()
+}

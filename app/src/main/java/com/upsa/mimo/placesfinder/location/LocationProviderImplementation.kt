@@ -10,7 +10,9 @@ import androidx.fragment.app.Fragment
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
 import io.reactivex.Observable
+import io.reactivex.Single
 import io.reactivex.subjects.PublishSubject
+import io.reactivex.subjects.SingleSubject
 import org.jetbrains.annotations.NotNull
 
 class LocationProviderImplementation(private val fragment: Fragment) : ILocationProvider {
@@ -22,14 +24,14 @@ class LocationProviderImplementation(private val fragment: Fragment) : ILocation
 
     private var mFusedLocationClient: FusedLocationProviderClient? = null
     private var mLocationRequest: LocationRequest? = null
-    private var publisher = PublishSubject.create<Location>()
+    private var publisher = SingleSubject.create<Location>()
 
     init {
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(checkNotNull(fragment.context))
         mLocationRequest = createLocationRequest()
     }
 
-    override fun getLocation(): Observable<Location> {
+    override fun getLocation(): Single<Location> {
         if (checkLocationPermission()) {
             val locationRequestBuilder = LocationSettingsRequest.Builder()
             val builder = locationRequestBuilder.addLocationRequest(mLocationRequest!!)
@@ -55,9 +57,7 @@ class LocationProviderImplementation(private val fragment: Fragment) : ILocation
 
     private fun createLocationCallback(): LocationCallback = object : LocationCallback() {
         override fun onLocationResult(locationResult: LocationResult?) {
-            locationResult?.let {
-                it.locations.forEach { location -> publisher.onNext(location) }
-            }
+            locationResult?.let { publisher.onSuccess(it.locations.first()) }
             mFusedLocationClient?.removeLocationUpdates(this)
         }
     }

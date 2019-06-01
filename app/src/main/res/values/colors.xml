@@ -9,4 +9,8 @@
     <color name="bottom_nav_view_background">#26282F</color>
     <color name="disabled_icon">#ADADB2</color>
 
+    <!--Loading Screen-->
+    <color name="loading__translucent_black_background">#80000000</color>
+    <color name="bgBackSideColor">#3322243f</color>
+
 </resources>

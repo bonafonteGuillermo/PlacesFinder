@@ -7,6 +7,7 @@ import com.upsa.mimo.placesfinder.data.repository.IRepository
 import com.upsa.mimo.placesfinder.rx.AppSchedulers
 import com.upsa.mimo.placesfinder.utils.getLocationQueryParam
 import io.reactivex.disposables.Disposable
+import java.util.concurrent.TimeUnit
 
 /**
  *
@@ -20,18 +21,18 @@ class PlacesPresenter(
 ) : IPlacesPresenter {
 
     init {
+        view?.showLoading()
         requestLocation()
     }
 
-    private fun requestLocation() {
+    override fun requestLocation() {
         val observable = locationProvider.getLocation()
             .subscribeOn(schedulers.internet())
             .observeOn(schedulers.androidThread())
+            .timeout(7, TimeUnit.SECONDS)
             .subscribe(
                 { location -> getNearByPlaces(location) },
-                {
-                    //TODO show error
-                    Log.d("->", it.toString()) }
+                { view?.showErrorDialog() }
             )
     }
 
@@ -39,20 +40,23 @@ class PlacesPresenter(
         locationProvider.permissionsGranted()
     }
 
-    private fun getNearByPlaces(location: Location) : Disposable {
-        return repository.getNearByPlaces(location)
+    private fun getNearByPlaces(location: Location) {
+        val observable = repository.getNearByPlaces(location)
             .subscribeOn(schedulers.internet())
             .observeOn(schedulers.androidThread())
             .subscribe(
-                { it.forEach { place -> Log.d("->", place.toString()) } },
                 {
-                    //TODO show error
-                    Log.d("->", it.toString())
+                    view?.hideLoading()
+                    it.forEach { place -> Log.d("->", place.toString()) }
+                },
+                {
+                    view?.hideLoading()
+                    view?.showErrorDialog()
                 }
             )
     }
 
-    override fun onDestroy(){
+    override fun onDestroy() {
         view = null
     }
 }
