@@ -19,15 +19,18 @@ fun Location.getLocationQueryParam(): String {
     return sb.toString()
 }
 
-fun Context.showDialog(@StringRes title: Int, @StringRes message: Int, positiveListener: () -> Unit = {}) {
-
-    //TODO pass positive button text as argument also
+fun Context.showDialog(
+    @StringRes title: Int,
+    @StringRes message: Int,
+    @StringRes possitiveButtonText: Int,
+    positiveListener: () -> Unit = {}
+) {
 
     AlertDialog.Builder(this)
         .setTitle(getString(title))
         .setMessage(message)
         .setNegativeButton(android.R.string.cancel) { dialog, _ -> dialog.dismiss() }
-        .setPositiveButton("RETRY") { dialog, _ ->
+        .setPositiveButton(possitiveButtonText) { dialog, _ ->
             dialog.cancel()
             positiveListener()
         }

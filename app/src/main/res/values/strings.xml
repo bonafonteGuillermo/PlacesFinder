@@ -4,4 +4,5 @@
     <string name="activity_main_bottom_navigation_view_favourites">Favourites</string>
     <string name="dialog__error_title">Ups</string>
     <string name="dialog__error_message">Something went wrong</string>
+    <string name="dialog__retry">Retry</string>
 </resources>

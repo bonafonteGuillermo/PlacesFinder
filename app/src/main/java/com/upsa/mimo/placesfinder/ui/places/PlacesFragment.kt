@@ -62,9 +62,8 @@ class PlacesFragment : Fragment(), IPlacesView {
     override fun showErrorDialog() {
         context?.showDialog(
             R.string.dialog__error_title,
-            R.string.dialog__error_message
-        ) {
-            showLoading()
-            presenter.requestLocation() }
+            R.string.dialog__error_message,
+            R.string.dialog__retry
+        ) { presenter.requestLocation() }
     }
 }

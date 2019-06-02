@@ -8,6 +8,9 @@ import com.upsa.mimo.placesfinder.rx.AppSchedulers
 import com.upsa.mimo.placesfinder.utils.getLocationQueryParam
 import io.reactivex.disposables.Disposable
 import java.util.concurrent.TimeUnit
+import io.reactivex.disposables.CompositeDisposable
+
+
 
 /**
  *
@@ -20,43 +23,48 @@ class PlacesPresenter(
     private val locationProvider: ILocationProvider
 ) : IPlacesPresenter {
 
-    init {
-        view?.showLoading()
-        requestLocation()
-    }
+    private var disposables: CompositeDisposable = CompositeDisposable()
 
-    override fun requestLocation() {
-        val observable = locationProvider.getLocation()
-            .subscribeOn(schedulers.internet())
-            .observeOn(schedulers.androidThread())
-            .timeout(7, TimeUnit.SECONDS)
-            .subscribe(
-                { location -> getNearByPlaces(location) },
-                { view?.showErrorDialog() }
-            )
+    init {
+        requestLocation()
     }
 
     override fun permissionsGranted() {
         locationProvider.permissionsGranted()
     }
 
+    override fun onDestroy() {
+        view = null
+    }
+
+    override fun requestLocation() {
+        val observable = locationProvider.getLocation()
+            .subscribeOn(schedulers.internet())
+            .observeOn(schedulers.androidThread())
+            .timeout(10, TimeUnit.SECONDS)
+            .doOnSubscribe {
+                view?.showLoading()
+                disposables.add(it)
+            }
+            .subscribe(
+                { location -> getNearByPlaces(location) },
+                { view?.showErrorDialog() }
+            )
+    }
+
     private fun getNearByPlaces(location: Location) {
         val observable = repository.getNearByPlaces(location)
             .subscribeOn(schedulers.internet())
             .observeOn(schedulers.androidThread())
+            .doOnSubscribe { disposables.add(it) }
+            .timeout(10, TimeUnit.SECONDS)
+            .doFinally {
+                disposables.clear()
+                view?.hideLoading()
+            }
             .subscribe(
-                {
-                    view?.hideLoading()
-                    it.forEach { place -> Log.d("->", place.toString()) }
-                },
-                {
-                    view?.hideLoading()
-                    view?.showErrorDialog()
-                }
+                { it.forEach { place -> Log.d("->", place.toString()) } },
+                { view?.showErrorDialog() }
             )
-    }
-
-    override fun onDestroy() {
-        view = null
     }
 }
