@@ -63,7 +63,7 @@ class PlacesPresenter(
                 view?.hideLoading()
             }
             .subscribe(
-                { it.forEach { place -> Log.d("->", place.toString()) } },
+                { view?.bindPlacesData(it)},
                 { view?.showErrorDialog() }
             )
     }

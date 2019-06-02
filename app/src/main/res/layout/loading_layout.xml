@@ -6,7 +6,6 @@
                 android:layout_height="match_parent"
                 android:background="@color/loading__translucent_black_background"
                 android:visibility="gone"
-                tools:visibility="visible"
                 android:clickable="true"
                 android:focusable="true"
                 tools:showIn="@layout/fragment_places">

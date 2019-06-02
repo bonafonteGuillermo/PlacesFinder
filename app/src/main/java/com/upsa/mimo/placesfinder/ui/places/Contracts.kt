@@ -2,6 +2,7 @@ package com.upsa.mimo.placesfinder.ui.places
 
 import com.upsa.mimo.placesfinder.app.BasePresenter
 import com.upsa.mimo.placesfinder.app.BaseView
+import com.upsa.mimo.placesfinder.model.Place
 
 
 /**
@@ -18,4 +19,5 @@ interface IPlacesView : BaseView {
     fun showLoading()
     fun hideLoading()
     fun showErrorDialog()
+    fun bindPlacesData(places: List<Place>)
 }
