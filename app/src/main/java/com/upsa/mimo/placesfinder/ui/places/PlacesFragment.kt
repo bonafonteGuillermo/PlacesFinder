@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.upsa.mimo.placesfinder.R
 import com.upsa.mimo.placesfinder.app.injector
@@ -72,12 +73,14 @@ class PlacesFragment : Fragment(), IPlacesView {
     }
 
     override fun bindPlacesData(places: List<Place>) {
-        val placesAdapter = PlacesAdapter { itemClicked(it) }
+        val placesAdapter = PlacesAdapter { navigateToDetail(it) }
         placesAdapter.data = places
         recycler_view_places.adapter = placesAdapter
     }
 
-    fun itemClicked(place: Place){
-        Log.d("->",place.toString())
+    fun navigateToDetail(place: Place){
+        val action = PlacesFragmentDirections.actionPlacesFragmentToPlaceDetailFragment()
+        action.argumentPlace = place
+        findNavController().navigate(action)
     }
 }

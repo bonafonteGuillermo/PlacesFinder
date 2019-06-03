@@ -7,11 +7,31 @@
     <fragment android:id="@+id/placesFragment"
               android:name="com.upsa.mimo.placesfinder.ui.places.PlacesFragment"
               android:label="PlacesFragment"
-              tools:layout="@layout/fragment_places"/>
+              tools:layout="@layout/fragment_places">
+        <action
+                android:id="@+id/action_placesFragment_to_placeDetailFragment"
+                app:destination="@id/placeDetailFragment"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right"
+
+                app:popUpTo="@+id/placesFragment" app:popUpToInclusive="false" app:launchSingleTop="false"/>
+    </fragment>
+
     <fragment android:id="@+id/placeDetailFragment"
               android:name="com.upsa.mimo.placesfinder.ui.placedetail.PlaceDetailFragment"
               android:label="PlaceDetailFragment"
-              tools:layout="@layout/fragment_place_detail"/>
+              tools:layout="@layout/fragment_place_detail">
+
+        <argument
+                android:name="argumentPlace"
+                android:defaultValue="@null"
+                app:nullable="true"
+                app:argType="com.upsa.mimo.placesfinder.model.Place"/>
+
+    </fragment>
+
     <fragment android:id="@+id/favouritesFragment"
               android:name="com.upsa.mimo.placesfinder.ui.favourites.FavouritesFragment"
               android:label="FavouritesFragment"

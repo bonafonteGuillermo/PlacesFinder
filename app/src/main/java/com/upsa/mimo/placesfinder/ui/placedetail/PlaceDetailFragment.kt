@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.upsa.mimo.placesfinder.R
 import com.upsa.mimo.placesfinder.app.injector
+import kotlinx.android.synthetic.main.fragment_place_detail.*
 
 class PlaceDetailFragment : Fragment(), IPlaceDetailView {
 
@@ -21,5 +22,11 @@ class PlaceDetailFragment : Fragment(), IPlaceDetailView {
         super.onActivityCreated(savedInstanceState)
         val activityInjector = checkNotNull(activity)
         presenter = activityInjector.injector.placeDetailInjector.providesPlaceDetailPresenter(this)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val place = PlaceDetailFragmentArgs.fromBundle(checkNotNull(arguments)).argumentPlace
+        textView.text = place.toString()
     }
 }
