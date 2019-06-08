@@ -12,6 +12,6 @@ class FavouritesInjector(private val injector: Injector) {
         FavouritesPresenter(
             view,
             injector.repositoryInjector.providesRepository(),
-            RxInjector.providesRx()
+            SchedulersInjector.providesSchedulers()
         )
 }

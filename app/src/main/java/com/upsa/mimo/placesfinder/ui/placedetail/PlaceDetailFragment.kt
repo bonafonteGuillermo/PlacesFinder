@@ -26,7 +26,10 @@ class PlaceDetailFragment : Fragment(), IPlaceDetailView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val place = PlaceDetailFragmentArgs.fromBundle(checkNotNull(arguments)).argumentPlace
         textView.text = place.toString()
+
+        btn_add_to_favourite.setOnClickListener { presenter.addToFavourite(checkNotNull(place)) }
     }
 }

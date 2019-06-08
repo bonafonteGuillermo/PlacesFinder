@@ -2,6 +2,7 @@ package com.upsa.mimo.placesfinder.data.database
 
 import androidx.room.*
 import com.upsa.mimo.placesfinder.model.Place
+import io.reactivex.Completable
 
 @Dao
 interface PlacesDao {

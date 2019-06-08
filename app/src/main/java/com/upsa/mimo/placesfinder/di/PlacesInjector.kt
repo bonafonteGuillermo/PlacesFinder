@@ -13,7 +13,7 @@ class PlacesInjector(private val injector: Injector) {
         PlacesPresenter(
             view,
             injector.repositoryInjector.providesRepository(),
-            RxInjector.providesRx(),
+            SchedulersInjector.providesSchedulers(),
             LocationInjector.providesLocationProvider(view as Fragment)
         )
 }

@@ -34,6 +34,10 @@ class PlacesFragment : Fragment(), IPlacesView {
         presenter = activityInjector.injector.placesInjector.providesPlacesPresenter(this)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+    }
+
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             when (requestCode) {

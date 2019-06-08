@@ -18,6 +18,7 @@ class RepositoryInjector(private val injector: Injector, private val context: Co
             NetworkInjector.provideRxAdapter()
         ),
         localStorage = AppDatabaseInjector.providesAppDatabase(context),
-        prefs = injector.preferencesInjector.providesSharedPreferences(context)
+        prefs = injector.preferencesInjector.providesSharedPreferences(context),
+        schedulers = injector.schedulersInjector.providesSchedulers()
     )
 }

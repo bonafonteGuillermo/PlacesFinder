@@ -10,7 +10,7 @@ class AppSchedulers : ISchedulers{
     var internetExecutor : Executor = Executors.newCachedThreadPool()
     var internetSchedulers = io.reactivex.schedulers.Schedulers.from(internetExecutor)
 
-    override fun io(): Scheduler = io.reactivex.schedulers.Schedulers.io()
-    override fun androidThread(): Scheduler = AndroidSchedulers.mainThread()
+    override fun backgroundThread(): Scheduler = io.reactivex.schedulers.Schedulers.io()
+    override fun uiThread(): Scheduler = AndroidSchedulers.mainThread()
     override fun internet(): Scheduler = internetSchedulers
 }

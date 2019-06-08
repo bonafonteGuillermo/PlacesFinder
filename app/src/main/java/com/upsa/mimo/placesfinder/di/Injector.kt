@@ -7,7 +7,7 @@ import android.content.Context
  * Created by Guillermo Bonafonte Criado on 16/05/2019.
  */
 class Injector(private val context: Context) {
-    val rxInjector by lazy { RxInjector }
+    val schedulersInjector by lazy { SchedulersInjector }
     val apiInjector by lazy { ApiClientInjector }
     val networkInjector by lazy { NetworkInjector }
     val locationInjector by lazy { LocationInjector }

@@ -1,13 +1,9 @@
 package com.upsa.mimo.placesfinder.ui.places
 
 import android.location.Location
-import android.util.Log
 import com.upsa.mimo.placesfinder.location.ILocationProvider
 import com.upsa.mimo.placesfinder.data.repository.IRepository
 import com.upsa.mimo.placesfinder.rx.AppSchedulers
-import com.upsa.mimo.placesfinder.utils.getLocationQueryParam
-import io.reactivex.disposables.Disposable
-import java.util.concurrent.TimeUnit
 import io.reactivex.disposables.CompositeDisposable
 
 
@@ -40,8 +36,7 @@ class PlacesPresenter(
     override fun requestLocation() {
         val observable = locationProvider.getLocation()
             .subscribeOn(schedulers.internet())
-            .observeOn(schedulers.androidThread())
-            .timeout(10, TimeUnit.SECONDS)
+            .observeOn(schedulers.uiThread())
             .doOnSubscribe {
                 view?.showLoading()
                 disposables.add(it)
@@ -55,9 +50,8 @@ class PlacesPresenter(
     private fun getNearByPlaces(location: Location) {
         val observable = repository.getNearByPlaces(location)
             .subscribeOn(schedulers.internet())
-            .observeOn(schedulers.androidThread())
+            .observeOn(schedulers.uiThread())
             .doOnSubscribe { disposables.add(it) }
-            .timeout(10, TimeUnit.SECONDS)
             .doFinally {
                 disposables.clear()
                 view?.hideLoading()

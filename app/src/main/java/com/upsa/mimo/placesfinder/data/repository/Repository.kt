@@ -7,10 +7,10 @@ import com.upsa.mimo.placesfinder.model.Place
 import com.upsa.mimo.placesfinder.model.Status
 import com.upsa.mimo.placesfinder.data.api.Api
 import com.upsa.mimo.placesfinder.data.preferences.SharedPrefs
+import com.upsa.mimo.placesfinder.rx.AppSchedulers
 import com.upsa.mimo.placesfinder.utils.getLocationQueryParam
-import io.reactivex.Observable
+import io.reactivex.Completable
 import io.reactivex.Single
-import io.reactivex.subjects.PublishSubject
 import io.reactivex.subjects.SingleSubject
 
 /**
@@ -20,18 +20,27 @@ import io.reactivex.subjects.SingleSubject
 class Repository private constructor(
     private val api: Api,
     private val localStorage: AppDatabase,
-    private val prefs: SharedPrefs
+    private val prefs: SharedPrefs,
+    private val schedulers: AppSchedulers
 ) : IRepository {
 
     companion object {
-        @Volatile private var INSTANCE: Repository? = null
-        operator fun invoke(api: Api, localStorage: AppDatabase, prefs: SharedPrefs): IRepository =
+        @Volatile
+        private var INSTANCE: Repository? = null
+
+        operator fun invoke(
+            api: Api,
+            localStorage: AppDatabase,
+            prefs: SharedPrefs,
+            schedulers: AppSchedulers
+        ): IRepository =
             INSTANCE ?: synchronized(this) {
                 INSTANCE
                     ?: Repository(
                         api,
                         localStorage,
-                        prefs
+                        prefs,
+                        schedulers
                     ).also { INSTANCE = it }
             }
     }
@@ -52,5 +61,13 @@ class Repository private constructor(
             { publisher.onError(it) }
         )
         return publisher
+    }
+
+    override fun addPlaceToLocalStorage(place: Place): Completable {
+        return Completable.fromCallable {
+            localStorage.placesDao().insertPlace(place)
+        }
+            .subscribeOn(schedulers.backgroundThread())
+            .observeOn(schedulers.uiThread())
     }
 }
