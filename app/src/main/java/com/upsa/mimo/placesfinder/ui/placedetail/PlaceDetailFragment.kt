@@ -56,7 +56,7 @@ class PlaceDetailFragment : Fragment(), IPlaceDetailView {
     }
 
     private fun bindPlaceData(place: Place?) {
-        tv_place_name.text = place.toString()
+        tv_detail_place_name.text = place.toString()
 
     }
 }
