@@ -15,11 +15,36 @@ class PlaceDetailPresenter(
 ) : IPlaceDetailPresenter {
 
     //TODO clear disposables
-    var disposables : CompositeDisposable = CompositeDisposable()
+    var disposables: CompositeDisposable = CompositeDisposable()
 
-    override fun addToFavourite(place : Place) {
-        disposables += repository.addPlaceToLocalStorage(place).subscribe()
+    override fun addPlaceToFavourite(place: Place) {
+        disposables += repository.addPlaceToLocalStorage(place)
+            .doAfterTerminate { view?.setPlaceAlreadyAddedIcon() }
+            .subscribe()
     }
 
+    override fun removePlaceFromFavourite(place: Place) {
+        disposables += repository.removePlaceFromLocalStorage(place)
+            .subscribe(
+                {
+                    if (it > 0) view?.setPlaceNotAddedIcon()
+                }, {
+
+                    /*TODO handle error*/
+                })
+    }
+
+    override fun checkFavouritePlace(placeId: String) {
+        disposables += repository.getPlaceFromLocalStorage(placeId)
+            .subscribe({ place ->
+                if (place != null) {
+                    view?.setPlaceAlreadyAddedIcon()
+                } else {
+                    view?.setPlaceNotAddedIcon()
+                }
+            }, {
+                /*TODO handle error*/
+            })
+    }
 
 }

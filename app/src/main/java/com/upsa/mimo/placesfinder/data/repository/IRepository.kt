@@ -12,4 +12,6 @@ import io.reactivex.Single
 interface IRepository {
     fun getNearByPlaces(location: Location) : Single<List<Place>>
     fun addPlaceToLocalStorage(place: Place) : Completable
+    fun getPlaceFromLocalStorage(placeId: String): Single<Place?>
+    fun removePlaceFromLocalStorage(place: Place) : Single<Int>
 }

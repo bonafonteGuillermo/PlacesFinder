@@ -12,4 +12,7 @@ interface PlacesDao {
 
     @Delete
     fun deletePlace(vararg place : Place): Int
+
+    @Query("SELECT * FROM place WHERE place_id LIKE :placeId")
+    fun getPlace(vararg placeId : String) : Place
 }

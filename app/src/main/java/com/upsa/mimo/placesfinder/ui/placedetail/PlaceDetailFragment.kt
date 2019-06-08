@@ -7,29 +7,52 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.upsa.mimo.placesfinder.R
 import com.upsa.mimo.placesfinder.app.injector
+import com.upsa.mimo.placesfinder.model.Place
 import kotlinx.android.synthetic.main.fragment_place_detail.*
 
 class PlaceDetailFragment : Fragment(), IPlaceDetailView {
 
     private lateinit var presenter: IPlaceDetailPresenter
+    private var place: Place? = null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_place_detail, container, false)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        val activityInjector = checkNotNull(activity)
-        presenter = activityInjector.injector.placeDetailInjector.providesPlaceDetailPresenter(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val place = PlaceDetailFragmentArgs.fromBundle(checkNotNull(arguments)).argumentPlace
-        textView.text = place.toString()
+        val activityInjector = checkNotNull(activity)
+        presenter = activityInjector.injector.placeDetailInjector.providesPlaceDetailPresenter(this)
 
-        btn_add_to_favourite.setOnClickListener { presenter.addToFavourite(checkNotNull(place)) }
+        place = PlaceDetailFragmentArgs.fromBundle(checkNotNull(arguments)).argumentPlace
+
+        place?.let {
+            bindPlaceData(it)
+            presenter.checkFavouritePlace(checkNotNull(it.placeId))
+        }
+
+        btn_add_to_favourite.setOnClickListener { addFavouriteButtonClicked() }
     }
+
+    override fun setPlaceAlreadyAddedIcon() {
+        btn_add_to_favourite.text = "REMOVE"
+    }
+
+    override fun setPlaceNotAddedIcon() {
+        btn_add_to_favourite.text = "ADD"
+    }
+
+    private fun addFavouriteButtonClicked() {
+        if (btn_add_to_favourite.text == "ADD") {
+            presenter.addPlaceToFavourite(checkNotNull(place))
+        } else {
+            presenter.removePlaceFromFavourite(checkNotNull(place))
+        }
+    }
+
+    private fun bindPlaceData(place: Place?) = place.toString()
 }

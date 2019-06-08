@@ -12,14 +12,12 @@ import kotlinx.android.parcel.Parcelize
 @TypeConverters(PlaceConverter::class)
 data class Place(
 
-    @PrimaryKey
-    val id: String,
-
     val name: String?,
 
+    @PrimaryKey
     @SerializedName("place_id")
     @ColumnInfo(name = "place_id")
-    val placeId: String?,
+    val placeId: String,
 
     val types: List<String>?,
 

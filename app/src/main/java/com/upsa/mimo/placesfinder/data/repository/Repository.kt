@@ -70,4 +70,22 @@ class Repository private constructor(
             .subscribeOn(schedulers.backgroundThread())
             .observeOn(schedulers.uiThread())
     }
+
+    override fun getPlaceFromLocalStorage(placeId: String): Single<Place?> {
+        return Single.fromCallable {
+            localStorage.placesDao().getPlace(placeId)
+
+        }
+            .subscribeOn(schedulers.backgroundThread())
+            .observeOn(schedulers.uiThread())
+            .doOnError {  }
+    }
+
+    override fun removePlaceFromLocalStorage(place: Place) : Single<Int> {
+        return Single.fromCallable {
+            localStorage.placesDao().deletePlace(place)
+        }
+            .subscribeOn(schedulers.backgroundThread())
+            .observeOn(schedulers.uiThread())
+    }
 }
