@@ -78,10 +78,17 @@ class Repository private constructor(
         }
             .subscribeOn(schedulers.backgroundThread())
             .observeOn(schedulers.uiThread())
-            .doOnError {  }
     }
 
-    override fun removePlaceFromLocalStorage(place: Place) : Single<Int> {
+    override fun getAllPlacesFromLocalStorage(): Single<List<Place>> {
+        return Single.fromCallable {
+            localStorage.placesDao().getPlaces()
+        }
+            .subscribeOn(schedulers.backgroundThread())
+            .observeOn(schedulers.uiThread())
+    }
+
+    override fun removePlaceFromLocalStorage(place: Place): Single<Int> {
         return Single.fromCallable {
             localStorage.placesDao().deletePlace(place)
         }

@@ -28,14 +28,11 @@ class PlacesFragment : Fragment(), IPlacesView {
         return inflater.inflate(R.layout.fragment_places, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        val activityInjector = checkNotNull(activity)
-        presenter = activityInjector.injector.placesInjector.providesPlacesPresenter(this)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val activityInjector = checkNotNull(activity)
+        presenter = activityInjector.injector.placesInjector.providesPlacesPresenter(this)
+        presenter.requestLocation()
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
@@ -82,7 +79,7 @@ class PlacesFragment : Fragment(), IPlacesView {
         recycler_view_places.adapter = placesAdapter
     }
 
-    fun navigateToDetail(place: Place){
+    fun navigateToDetail(place: Place) {
         val action = PlacesFragmentDirections.actionPlacesFragmentToPlaceDetailFragment()
         action.argumentPlace = place
         findNavController().navigate(action)

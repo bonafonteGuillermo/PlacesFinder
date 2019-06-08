@@ -21,10 +21,6 @@ class PlacesPresenter(
 
     private var disposables: CompositeDisposable = CompositeDisposable()
 
-    init {
-        requestLocation()
-    }
-
     override fun permissionsGranted() {
         locationProvider.permissionsGranted()
     }

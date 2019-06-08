@@ -9,6 +9,7 @@ import com.upsa.mimo.placesfinder.R
 import com.upsa.mimo.placesfinder.app.injector
 import com.upsa.mimo.placesfinder.model.Place
 import kotlinx.android.synthetic.main.fragment_place_detail.*
+import kotlinx.android.synthetic.main.place_item.*
 
 class PlaceDetailFragment : Fragment(), IPlaceDetailView {
 
@@ -54,5 +55,8 @@ class PlaceDetailFragment : Fragment(), IPlaceDetailView {
         }
     }
 
-    private fun bindPlaceData(place: Place?) = place.toString()
+    private fun bindPlaceData(place: Place?) {
+        tv_place_name.text = place.toString()
+
+    }
 }

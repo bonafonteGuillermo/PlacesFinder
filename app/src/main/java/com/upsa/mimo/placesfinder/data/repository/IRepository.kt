@@ -14,4 +14,5 @@ interface IRepository {
     fun addPlaceToLocalStorage(place: Place) : Completable
     fun getPlaceFromLocalStorage(placeId: String): Single<Place?>
     fun removePlaceFromLocalStorage(place: Place) : Single<Int>
+    fun getAllPlacesFromLocalStorage(): Single<List<Place>>
 }

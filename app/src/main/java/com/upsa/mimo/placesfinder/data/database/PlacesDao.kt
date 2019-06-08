@@ -15,4 +15,8 @@ interface PlacesDao {
 
     @Query("SELECT * FROM place WHERE place_id LIKE :placeId")
     fun getPlace(vararg placeId : String) : Place
+
+    @Query("SELECT * FROM place")
+    fun getPlaces() : List<Place>
+
 }

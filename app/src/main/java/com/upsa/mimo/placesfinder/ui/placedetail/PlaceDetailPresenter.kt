@@ -28,23 +28,25 @@ class PlaceDetailPresenter(
             .subscribe(
                 {
                     if (it > 0) view?.setPlaceNotAddedIcon()
-                }, {
-
+                },
+                {
                     /*TODO handle error*/
                 })
     }
 
     override fun checkFavouritePlace(placeId: String) {
         disposables += repository.getPlaceFromLocalStorage(placeId)
-            .subscribe({ place ->
-                if (place != null) {
-                    view?.setPlaceAlreadyAddedIcon()
-                } else {
-                    view?.setPlaceNotAddedIcon()
-                }
-            }, {
-                /*TODO handle error*/
-            })
+            .subscribe(
+                { place ->
+                    if (place != null) {
+                        view?.setPlaceAlreadyAddedIcon()
+                    } else {
+                        view?.setPlaceNotAddedIcon()
+                    }
+                },
+                {
+                    /*TODO handle error*/
+                })
     }
 
 }
