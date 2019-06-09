@@ -31,6 +31,7 @@ class PlacesAdapter(
 
         fun bind(placeItem : Place) = with(itemView){
             tv_place_name.text = placeItem.name
+//            tv_place_vicinity.text = placeItem.vicinity
             setOnClickListener { listener(placeItem) }
         }
     }
