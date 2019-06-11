@@ -33,6 +33,8 @@ data class Place(
 
     val vicinity: String?,
 
+    val geometry: Geometry,
+
     var isFavourite: Boolean = false
 ) : Parcelable
 

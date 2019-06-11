@@ -9,9 +9,9 @@ import com.upsa.mimo.placesfinder.model.Place
  * Created by Guillermo Bonafonte Criado on 16/05/2019.
  */
 interface IPlaceDetailPresenter : BasePresenter<IPlaceDetailView> {
-    fun addPlaceToFavourite(place : Place)
+    fun addPlaceToFavourite(place: Place)
     fun checkFavouritePlace(placeId: String)
-    fun removePlaceFromFavourite(place : Place)
+    fun removePlaceFromFavourite(place: Place)
 }
 
 interface IPlaceDetailView : BaseView {

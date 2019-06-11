@@ -27,7 +27,7 @@ class PlaceDetailPresenter(
         disposables += repository.removePlaceFromLocalStorage(place)
             .subscribe(
                 {
-                    if (it > 0) view?.setPlaceNotAddedIcon()
+                    view?.setPlaceNotAddedIcon()
                 },
                 {
                     /*TODO handle error*/

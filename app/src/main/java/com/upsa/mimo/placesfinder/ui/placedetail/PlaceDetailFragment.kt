@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.upsa.mimo.placesfinder.R
 import com.upsa.mimo.placesfinder.app.injector
 import com.upsa.mimo.placesfinder.model.Place
@@ -56,6 +57,14 @@ class PlaceDetailFragment : Fragment(), IPlaceDetailView {
     }
 
     private fun bindPlaceData(place: Place?) {
+
         tv_detail_place_name.text = place.toString()
+        Glide
+            .with(this)
+            .load("https://maps.googleapis.com/maps/api/staticmap?center=${place}%2c%20${place}&zoom=12&size=400x400&markers=color:blue%7Clabel:S%7C40.702147,-74.015794&key=AIzaSyANHdY3Bxr-Oc6_FjXpZTskCXz65uV_gaE")
+            .centerCrop()
+                .into(image_map_view)
     }
+
+
 }
