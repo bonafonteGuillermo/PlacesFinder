@@ -7,11 +7,10 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.upsa.mimo.placesfinder.R
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlin.math.log
 
 /**
  *
@@ -25,8 +24,13 @@ class BaseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        bottom_nav_view.setupWithNavController(navController)
         setSupportActionBar(toolbar)
+        bottom_nav_view.setUpBottomNavigationView()
+    }
+
+    private fun BottomNavigationView.setUpBottomNavigationView() {
+        setupWithNavController(navController)
+        setOnNavigationItemReselectedListener {}
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -40,4 +44,6 @@ class BaseActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+
 }
