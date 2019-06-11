@@ -6,19 +6,26 @@
         android:layout_height="match_parent"
         android:background="@color/screen_background">
 
-    <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view_places"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_to_refresh_places"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingBottom="5dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:overScrollMode="never"
-            tools:itemCount="5"
-            tools:listitem="@layout/place_item"/>
+            android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_places"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="5dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:overScrollMode="never"
+                tools:itemCount="5"
+                tools:listitem="@layout/place_item"/>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <include
             android:id="@+id/places_loading"

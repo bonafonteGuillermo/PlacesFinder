@@ -51,6 +51,7 @@ class PlacesPresenter(
             .doFinally {
                 disposables.clear()
                 view?.hideLoading()
+                view?.hideSwipeToRefresh()
             }
             .subscribe(
                 { view?.bindPlacesData(it)},

@@ -33,6 +33,10 @@ class PlacesFragment : Fragment(), IPlacesView {
         val activityInjector = checkNotNull(activity)
         presenter = activityInjector.injector.placesInjector.providesPlacesPresenter(this)
         presenter.requestLocation()
+
+        swipe_to_refresh_places.setOnRefreshListener {
+            presenter.requestLocation()
+        }
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
@@ -63,6 +67,10 @@ class PlacesFragment : Fragment(), IPlacesView {
 
     override fun hideLoading() {
         places_loading.visibility = View.GONE
+    }
+
+    override fun hideSwipeToRefresh() {
+        swipe_to_refresh_places.isRefreshing = false
     }
 
     override fun showErrorDialog() {

@@ -20,4 +20,5 @@ interface IPlacesView : BaseView {
     fun hideLoading()
     fun showErrorDialog()
     fun bindPlacesData(places: List<Place>)
+    fun hideSwipeToRefresh()
 }
