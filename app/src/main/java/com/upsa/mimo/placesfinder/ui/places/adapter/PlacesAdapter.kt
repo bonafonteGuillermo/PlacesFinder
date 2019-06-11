@@ -19,7 +19,7 @@ class PlacesAdapter(
     var data by Delegates.observable(data) { _, _, _ -> notifyDataSetChanged() }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        PlacesViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.place_item,null), listener)
+        PlacesViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.place_item,parent,false), listener)
 
     override fun onBindViewHolder(holder: PlacesViewHolder, position: Int) {
         holder.bind(data[position])
@@ -31,7 +31,7 @@ class PlacesAdapter(
 
         fun bind(placeItem : Place) = with(itemView){
             tv_place_name.text = placeItem.name
-//            tv_place_vicinity.text = placeItem.vicinity
+            tv_place_vicinity.text = placeItem.vicinity
             setOnClickListener { listener(placeItem) }
         }
     }
