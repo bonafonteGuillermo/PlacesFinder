@@ -34,9 +34,8 @@ data class Place(
     val vicinity: String?,
 
     @Embedded
-    val geometry: Geometry,
+    val geometry: Geometry
 
-    var isFavourite: Boolean = false
 ) : Parcelable
 
 class PlaceConverter {
