@@ -45,13 +45,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-            <Button
+            <ImageButton
                     android:id="@+id/btn_add_to_favourite"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ADD"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/place_details__like_unselected"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:tag="UNSELECTED"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
 

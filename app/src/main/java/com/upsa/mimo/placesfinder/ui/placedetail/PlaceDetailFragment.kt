@@ -1,12 +1,10 @@
 package com.upsa.mimo.placesfinder.ui.placedetail
 
 import android.content.Context
-import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.upsa.mimo.placesfinder.R
@@ -43,15 +41,21 @@ class PlaceDetailFragment : Fragment(), IPlaceDetailView {
     }
 
     override fun setPlaceAlreadyAddedIcon() {
-        btn_add_to_favourite.text = "REMOVE"
+        with(btn_add_to_favourite){
+            background = safeContext.getDrawable(R.drawable.place_details__like_selected)
+            tag = "SELECTED"
+        }
     }
 
     override fun setPlaceNotAddedIcon() {
-        btn_add_to_favourite.text = "ADD"
+        with(btn_add_to_favourite){
+            background = safeContext.getDrawable(R.drawable.place_details__like_unselected)
+            tag = "UNSELECTED"
+        }
     }
 
     private fun addFavouriteButtonClicked() {
-        if (btn_add_to_favourite.text == "ADD") {
+        if (btn_add_to_favourite.tag == "UNSELECTED") {
             presenter.addPlaceToFavourite(checkNotNull(place))
         } else {
             presenter.removePlaceFromFavourite(checkNotNull(place))
