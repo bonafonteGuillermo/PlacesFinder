@@ -18,22 +18,3 @@ fun Location.getLocationQueryParam(): String {
     sb.append(this.latitude).append(",").append(this.longitude)
     return sb.toString()
 }
-
-fun Context.showDialog(
-    @StringRes title: Int,
-    @StringRes message: Int,
-    @StringRes possitiveButtonText: Int,
-    positiveListener: () -> Unit = {}
-) {
-
-    AlertDialog.Builder(this)
-        .setTitle(getString(title))
-        .setMessage(message)
-        .setNegativeButton(android.R.string.cancel) { dialog, _ -> dialog.dismiss() }
-        .setPositiveButton(possitiveButtonText) { dialog, _ ->
-            dialog.cancel()
-            positiveListener()
-        }
-        .create()
-        .show()
-}
