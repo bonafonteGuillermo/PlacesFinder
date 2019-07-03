@@ -1,7 +1,7 @@
 package com.upsa.mimo.placesfinder.app
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +10,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.upsa.mimo.placesfinder.R
+import com.upsa.mimo.placesfinder.ui.settings.SettingsActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
@@ -40,10 +41,13 @@ class BaseActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean { item.itemId
         when(item.itemId){
-            R.id.action_settings -> Log.d("->", "Settings")
+            R.id.action_settings -> navigateToSettings()
         }
         return super.onOptionsItemSelected(item)
     }
 
-
+    private fun navigateToSettings(){
+        val intent = Intent(this, SettingsActivity::class.java)
+        startActivity(intent)
+    }
 }
