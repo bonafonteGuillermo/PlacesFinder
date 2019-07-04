@@ -5,4 +5,9 @@
     <string name="dialog__error_title">Ups</string>
     <string name="dialog__error_message">Something went wrong</string>
     <string name="dialog__retry">Retry</string>
+    <string name="settings__place_type_label">Place Type</string>
+    <string name="settings__place_radius_label">Radius</string>
+    <string name="settings__filter_type_museum">Museum</string>
+    <string name="settings__filter_type_parking">Parking</string>
+    <string name="settings__filter_type_restaurant">Restaurant</string>
 </resources>
