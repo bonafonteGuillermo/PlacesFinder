@@ -46,9 +46,10 @@ class Repository private constructor(
     }
 
     override fun getNearByPlaces(location: Location): Single<List<Place>> {
+
         val publisher = SingleSubject.create<List<Place>>()
         val results =
-            api.getPlaces(location.getLocationQueryParam(), "1500", "restaurants", BuildConfig.GoogleSecAPIKEY)
+            api.getPlaces(location.getLocationQueryParam(), prefs.filterRadius.toString(), prefs.filterType, BuildConfig.GoogleSecAPIKEY)
 
         val disposable = results.subscribe(
             {
@@ -95,4 +96,19 @@ class Repository private constructor(
             .subscribeOn(schedulers.backgroundThread())
             .observeOn(schedulers.uiThread())
     }
+
+    //region shared preferences
+    override fun saveFilterTypeInSharedPrefs(type: String) {
+        prefs.filterType = type
+    }
+
+    override fun saveFilterRadiusInSharedPrefs(radius: Int) {
+        prefs.filterRadius = radius
+    }
+
+    override fun getFilterTypeFromSharedPrefs(): String = prefs.filterType
+
+
+    override fun getFilterRadiusFromSharedPrefs(): Int = prefs.filterRadius
+    //endregion
 }

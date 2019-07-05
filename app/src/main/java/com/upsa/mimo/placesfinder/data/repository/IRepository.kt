@@ -15,4 +15,8 @@ interface IRepository {
     fun getPlaceFromLocalStorage(placeId: String): Single<Place?>
     fun removePlaceFromLocalStorage(place: Place) : Single<Int>
     fun getAllPlacesFromLocalStorage(): Single<List<Place>>
+    fun saveFilterTypeInSharedPrefs(type : String)
+    fun saveFilterRadiusInSharedPrefs(radius : Int)
+    fun getFilterTypeFromSharedPrefs() : String
+    fun getFilterRadiusFromSharedPrefs() : Int
 }
