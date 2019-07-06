@@ -1,7 +1,6 @@
 package com.upsa.mimo.placesfinder.ui.settings
 
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.View
 import android.widget.RadioButton
 import android.widget.SeekBar

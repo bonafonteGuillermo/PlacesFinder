@@ -1,7 +1,6 @@
 package com.upsa.mimo.placesfinder.ui.favourites
 
 import com.upsa.mimo.placesfinder.data.repository.IRepository
-import com.upsa.mimo.placesfinder.model.Place
 import com.upsa.mimo.placesfinder.rx.AppSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.plusAssign
@@ -27,6 +26,4 @@ class FavouritesPresenter(
 
             })
     }
-
-
 }
