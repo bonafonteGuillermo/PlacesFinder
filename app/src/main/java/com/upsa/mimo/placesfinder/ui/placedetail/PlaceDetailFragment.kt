@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.bumptech.glide.Glide
 import com.upsa.mimo.placesfinder.R
 import com.upsa.mimo.placesfinder.app.injector
 import com.upsa.mimo.placesfinder.model.Place
+import com.upsa.mimo.placesfinder.utils.setPlaceRatingValue
+import com.upsa.mimo.placesfinder.utils.setStaticMapImage
+import com.upsa.mimo.placesfinder.utils.setTotalReviews
 import kotlinx.android.synthetic.main.fragment_place_detail.*
 
 class PlaceDetailFragment : Fragment(), IPlaceDetailView {
@@ -41,14 +43,14 @@ class PlaceDetailFragment : Fragment(), IPlaceDetailView {
     }
 
     override fun setPlaceAlreadyAddedIcon() {
-        with(btn_add_to_favourite){
+        with(btn_add_to_favourite) {
             background = safeContext.getDrawable(R.drawable.place_details__like_selected)
             tag = "SELECTED"
         }
     }
 
     override fun setPlaceNotAddedIcon() {
-        with(btn_add_to_favourite){
+        with(btn_add_to_favourite) {
             background = safeContext.getDrawable(R.drawable.place_details__like_unselected)
             tag = "UNSELECTED"
         }
@@ -62,30 +64,13 @@ class PlaceDetailFragment : Fragment(), IPlaceDetailView {
         }
     }
 
-    private fun bindPlaceData(place: Place?) {
-        tv_detail_place_name.text = place?.name
-        tv_detail_place_vicinity.text = place?.vicinity
-        setRatingBar()
-        setTotalReviews()
-        Glide
-            .with(this)
-            .load("https://maps.googleapis.com/maps/api/staticmap?center=${place?.geometry?.location?.lat}%2c%20${place?.geometry?.location?.lng}&zoom=16&size=400x400&scale=2x400&markers=color:blue%7C${place?.geometry?.location?.lat},${place?.geometry?.location?.lng}&key=AIzaSyANHdY3Bxr-Oc6_FjXpZTskCXz65uV_gaE")
-            .centerCrop()
-            .into(image_map_view)
-    }
-
-    private fun setRatingBar() {
-        place?.rating?.let {
-            with(place_details__rating) {
-                progress = it.toInt()
-                setIsIndicator(true)
-            }
-        }
-    }
-
-    private fun setTotalReviews() {
-        place?.userRatingTotal?.let {
-            place_details__total_reviews.text = it.toString()
+    fun bindPlaceData(place: Place?) {
+        place?.let { place ->
+            tv_detail_place_name.text = place.name
+            tv_detail_place_vicinity.text = place.vicinity
+            place_details__rating.setPlaceRatingValue(checkNotNull(place.rating))
+            place_details__total_reviews.setTotalReviews(place.userRatingTotal.toString())
+            image_map_view.setStaticMapImage(place)
         }
     }
 }

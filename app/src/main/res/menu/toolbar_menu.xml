@@ -11,4 +11,12 @@
             app:showAsAction="collapseActionView">
     </item>
 
+    <item
+            android:id="@+id/action_Profile"
+            android:icon="@android:drawable/ic_menu_send"
+            android:title="Profile"
+            android:iconTint="@color/white"
+            app:showAsAction="collapseActionView">
+    </item>
+
 </menu>
