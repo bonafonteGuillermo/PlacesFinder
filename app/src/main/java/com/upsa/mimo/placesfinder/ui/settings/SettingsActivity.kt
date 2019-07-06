@@ -10,7 +10,6 @@ import com.upsa.mimo.placesfinder.app.injector
 import com.upsa.mimo.placesfinder.data.repository.IRepository
 import kotlinx.android.synthetic.main.activity_settings.*
 
-
 class SettingsActivity : AppCompatActivity() {
 
     private val repository: IRepository by lazy { injector.repositoryInjector.providesRepository() }
@@ -65,5 +64,4 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun getSelectedPlaceRadiusFilter(): Int = settings__seekbar_radius.progress
-
 }

@@ -9,6 +9,7 @@ import com.upsa.mimo.placesfinder.R
 import com.upsa.mimo.placesfinder.app.injector
 import com.upsa.mimo.placesfinder.model.Place
 import com.upsa.mimo.placesfinder.ui.favourites.adapter.FragmentViewPagerAdapter
+import com.upsa.mimo.placesfinder.ui.favourites.utils.CustomViewPagerTransformer
 import kotlinx.android.synthetic.main.fragment_favourites.*
 
 class FavouritesFragment : Fragment(), IFavouritesView {
@@ -30,5 +31,6 @@ class FavouritesFragment : Fragment(), IFavouritesView {
     override fun bindFavouritesPlacesData(favouritesPlaces: List<Place>) {
         val viewPagerAdapter = FragmentViewPagerAdapter(favouritesPlaces, checkNotNull(fragmentManager))
         favourites__view_pager.adapter = viewPagerAdapter
+        favourites__view_pager.setPageTransformer(true, CustomViewPagerTransformer())
     }
 }

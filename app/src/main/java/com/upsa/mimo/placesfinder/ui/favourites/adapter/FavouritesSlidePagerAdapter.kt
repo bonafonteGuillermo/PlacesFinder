@@ -5,6 +5,9 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.upsa.mimo.placesfinder.model.Place
 import com.upsa.mimo.placesfinder.ui.favourites.FavouriteSlideFragment
+import android.widget.FrameLayout
+
+
 
 class FragmentViewPagerAdapter(private var places: List<Place>, fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
 
