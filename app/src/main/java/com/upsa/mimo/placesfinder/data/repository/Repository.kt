@@ -99,7 +99,7 @@ class Repository private constructor(
 
     //region shared preferences
     override fun saveFilterTypeInSharedPrefs(type: String) {
-        prefs.filterType = type
+        prefs.filterType = type.toLowerCase()
     }
 
     override fun saveFilterRadiusInSharedPrefs(radius: Int) {

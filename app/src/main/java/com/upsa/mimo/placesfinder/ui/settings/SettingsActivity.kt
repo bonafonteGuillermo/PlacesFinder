@@ -34,7 +34,7 @@ class SettingsActivity : AppCompatActivity() {
     private fun setUpRadioGroup() {
         val typeFromSharedPrefs = repository.getFilterTypeFromSharedPrefs()
         settings__radio_group.children.forEach { radioButton ->
-            if ((radioButton as RadioButton).text == typeFromSharedPrefs) {
+            if ((radioButton as RadioButton).text.toString().equals(typeFromSharedPrefs, true)) {
                 radioButton.isChecked = true
             }
         }
