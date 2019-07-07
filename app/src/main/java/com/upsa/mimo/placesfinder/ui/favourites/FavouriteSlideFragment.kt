@@ -4,7 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.cardview.widget.CardView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.os.bundleOf
+import androidx.core.util.Preconditions.checkNotNull
 import androidx.fragment.app.Fragment
 import com.upsa.mimo.placesfinder.R
 import com.upsa.mimo.placesfinder.model.Place
@@ -39,9 +42,13 @@ class FavouriteSlideFragment : Fragment() {
         place?.let { place ->
             tv_detail_place_name.text = place.name
             tv_detail_place_vicinity.text = place.vicinity
-            place_details__rating.setPlaceRatingValue(checkNotNull(place.rating))
-            place_details__total_reviews.setTotalReviews(place.userRatingTotal.toString())
+            place.rating?.let { place_details__rating.setPlaceRatingValue(it) }
+            place.userRatingTotal?.let { place_details__total_reviews.setTotalReviews(it.toString()) }
             image_map_view.setStaticMapImage(place)
         }
+    }
+
+    fun getMCardView(): CardView {
+        return place_details__card
     }
 }

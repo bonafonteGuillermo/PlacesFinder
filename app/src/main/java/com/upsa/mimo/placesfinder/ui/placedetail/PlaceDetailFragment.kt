@@ -64,12 +64,12 @@ class PlaceDetailFragment : Fragment(), IPlaceDetailView {
         }
     }
 
-    fun bindPlaceData(place: Place?) {
+    private fun bindPlaceData(place: Place?) {
         place?.let { place ->
             tv_detail_place_name.text = place.name
             tv_detail_place_vicinity.text = place.vicinity
-            place_details__rating.setPlaceRatingValue(checkNotNull(place.rating))
-            place_details__total_reviews.setTotalReviews(place.userRatingTotal.toString())
+            place.rating?.let { place_details__rating.setPlaceRatingValue(it) }
+            place.userRatingTotal?.let { place_details__total_reviews.setTotalReviews(it.toString()) }
             image_map_view.setStaticMapImage(place)
         }
     }

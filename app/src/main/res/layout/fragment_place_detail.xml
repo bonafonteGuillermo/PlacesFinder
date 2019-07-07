@@ -1,122 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.cardview.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:id="@+id/place_details__card"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="4dp"
+        app:cardCornerRadius="6dp"
+        android:padding="8dp"
         android:background="@color/screen_background">
 
-    <ImageView
-            android:id="@+id/image_map_view"
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/avatars"
-            android:scaleType="centerCrop"
-            app:layout_constraintBottom_toTopOf="@id/middle_screen_guideline"/>
+            android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/middle_screen_guideline"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.4"/>
-
-    <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/top_screen_guideline"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.3"/>
-
-    <androidx.cardview.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/top_screen_guideline"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:cardBackgroundColor="@color/places__card_view_background"
-            app:cardCornerRadius="10dp"
-            android:elevation="5dp"
-            android:layout_margin="20dp">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <ImageView
+                android:id="@+id/image_map_view"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="0dp"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/avatars"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toTopOf="@id/middle_screen_guideline"/>
 
-            <ImageButton
-                    android:id="@+id/btn_add_to_favourite"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/place_details__like_unselected"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:tag="UNSELECTED"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+        <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/middle_screen_guideline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.4"/>
 
-            <TextView
-                    android:id="@+id/tv_detail_place_name"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    tools:text="@tools:sample/lorem"
-                    android:textColor="@color/white"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="28dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
-                    app:layout_constraintTop_toBottomOf="@id/btn_add_to_favourite"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-            />
+        <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/top_screen_guideline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.3"/>
 
-            <RatingBar
-                    android:id="@+id/place_details__rating"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginStart="24sp"
-                    android:numStars="5"
-                    android:progressTint="@color/colorSecondary"
-                    android:stepSize="1.0"
-                    tools:progress="3"
-                    style="@style/Widget.AppCompat.RatingBar.Small"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_detail_place_name"/>
+        <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/top_screen_guideline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:cardBackgroundColor="@color/places__card_view_background"
+                app:cardCornerRadius="10dp"
+                android:elevation="5dp"
+                android:layout_margin="20dp">
 
-            <TextView
-                    android:id="@+id/place_details__total_reviews"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    tools:text="@tools:sample/us_zipcodes"
-                    android:textColor="@color/text_subtitle"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="24dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/place_details__rating"
-                    app:layout_constraintBottom_toBottomOf="@+id/place_details__rating"
-                    app:layout_constraintTop_toTopOf="@+id/place_details__rating"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-            <TextView
-                    android:id="@+id/tv_detail_place_vicinity"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
-                    android:textColor="@color/white"
-                    android:drawableStart="@drawable/place_details__ic_location"
-                    android:drawablePadding="8dp"
-                    tools:text="@tools:sample/lorem"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/place_details__rating"
-            />
+                <ImageButton
+                        android:id="@+id/btn_add_to_favourite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/place_details__like_unselected"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:tag="UNSELECTED"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                        android:id="@+id/tv_detail_place_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        tools:text="@tools:sample/lorem"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="28dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginEnd="24dp"
+                        app:layout_constraintTop_toBottomOf="@id/btn_add_to_favourite"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                />
 
-    </androidx.cardview.widget.CardView>
+                <RatingBar
+                        android:id="@+id/place_details__rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginStart="24sp"
+                        android:numStars="5"
+                        android:progressTint="@color/colorSecondary"
+                        android:stepSize="1.0"
+                        tools:progress="3"
+                        style="@style/Widget.AppCompat.RatingBar.Small"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_detail_place_name"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                        android:id="@+id/place_details__total_reviews"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        tools:text="@tools:sample/us_zipcodes"
+                        android:textColor="@color/text_subtitle"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="24dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/place_details__rating"
+                        app:layout_constraintBottom_toBottomOf="@+id/place_details__rating"
+                        app:layout_constraintTop_toTopOf="@+id/place_details__rating"/>
+
+                <TextView
+                        android:id="@+id/tv_detail_place_vicinity"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginEnd="24dp"
+                        android:textColor="@color/white"
+                        android:drawableStart="@drawable/place_details__ic_location"
+                        android:drawablePadding="8dp"
+                        tools:text="@tools:sample/lorem"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/place_details__rating"
+                />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

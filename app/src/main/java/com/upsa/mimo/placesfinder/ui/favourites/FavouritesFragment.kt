@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.util.Preconditions.checkNotNull
 import androidx.fragment.app.Fragment
 import com.upsa.mimo.placesfinder.R
 import com.upsa.mimo.placesfinder.app.injector
 import com.upsa.mimo.placesfinder.model.Place
 import com.upsa.mimo.placesfinder.ui.favourites.adapter.FragmentViewPagerAdapter
+import com.upsa.mimo.placesfinder.ui.favourites.utils.CardTransformer
 import com.upsa.mimo.placesfinder.ui.favourites.utils.CustomViewPagerTransformer
 import kotlinx.android.synthetic.main.fragment_favourites.*
 
@@ -31,6 +33,7 @@ class FavouritesFragment : Fragment(), IFavouritesView {
     override fun bindFavouritesPlacesData(favouritesPlaces: List<Place>) {
         val viewPagerAdapter = FragmentViewPagerAdapter(favouritesPlaces, checkNotNull(fragmentManager))
         favourites__view_pager.adapter = viewPagerAdapter
-        favourites__view_pager.setPageTransformer(true, CustomViewPagerTransformer())
+        favourites__view_pager.setPageTransformer(true, CardTransformer(favourites__view_pager, viewPagerAdapter))
+        favourites__view_pager.pageMargin = 60
     }
 }
