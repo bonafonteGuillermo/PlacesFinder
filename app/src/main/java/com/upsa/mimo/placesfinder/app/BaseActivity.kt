@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.activity_main.*
  */
 class BaseActivity : AppCompatActivity() {
 
-    private val navController : NavController by lazy { findNavController(R.id.main_nav_host_fragment) }
+    private val navController: NavController by lazy { findNavController(R.id.main_nav_host_fragment) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,18 +35,18 @@ class BaseActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.toolbar_menu,menu)
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean { item.itemId
-        when(item.itemId){
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
             R.id.action_settings -> navigateToSettings()
         }
         return super.onOptionsItemSelected(item)
     }
 
-    private fun navigateToSettings(){
+    private fun navigateToSettings() {
         val intent = Intent(this, SettingsActivity::class.java)
         startActivity(intent)
     }
