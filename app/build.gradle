@@ -20,6 +20,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    flavorDimensions "single"
+    productFlavors {
+        premium {
+            buildConfigField "String", "APP_NAME", "\"PlaceFinder Premium\""
+            applicationIdSuffix ".premium"
+            versionNameSuffix "-premium"
+        }
+        free {
+            buildConfigField "String", "APP_NAME", "\"PlaceFinder Free\""
+            applicationIdSuffix ".free"
+            versionNameSuffix "-free"
+        }
+    }
+
     buildTypes.each {
         it.buildConfigField 'String', 'GoogleSecAPIKEY', GoogleAPIKey
     }
