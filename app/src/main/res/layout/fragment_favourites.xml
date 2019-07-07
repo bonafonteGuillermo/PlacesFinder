@@ -12,10 +12,7 @@
             android:layout_height="match_parent"
             android:clipToPadding="false"
             android:overScrollMode="never"
-            android:paddingBottom="25dp"
-            android:paddingTop="25dp"
-            android:paddingEnd="25dp"
-            android:paddingStart="25dp"
+            android:padding="@dimen/favourites__view_pager_padding"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="@id/favourites_guideline_start"
@@ -25,7 +22,7 @@
     <androidx.constraintlayout.widget.Guideline
             android:id="@+id/favourites_guideline_start"
             android:layout_height="match_parent"
-            android:layout_width="1dp"
+            android:layout_width="@dimen/guideline_width"
             android:orientation="vertical"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintGuide_percent="0.05"/>

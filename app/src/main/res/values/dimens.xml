@@ -1,4 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="activity_main_bottom_navigation_view_height">56dp</dimen>
+    <dimen name="common__match_constraint">0dp</dimen>
+    <dimen name="settings__padding_start">20dp</dimen>
+    <dimen name="settings__padding_end">20dp</dimen>
+    <dimen name="settings__filter_type_label_margin_top">40dp</dimen>
+    <dimen name="settings__radio_group_margin">8dp</dimen>
+    <dimen name="settings__radio_museum_margin_top">30dp</dimen>
+    <dimen name="settings__radio_parking_margin_top">20dp</dimen>
+    <dimen name="settings__radio_restaurant_margin_top">20dp</dimen>
+    <dimen name="settings__filter_radius_label_margin_top">40dp</dimen>
+    <dimen name="settings__filter_seekbar_value_padding">4dp</dimen>
+    <dimen name="settings__filter_seekbar_value_margin_top">30dp</dimen>
+    <dimen name="favourite__tv_favourite_place_name_padding">15dp</dimen>
+    <dimen name="favourites__view_pager_padding">25dp</dimen>
+    <dimen name="guideline_width">1dp</dimen>
+    <dimen name="card_elevation">4dp</dimen>
+    <dimen name="card_corner_radius">6dp</dimen>
+    <dimen name="place_detail__card_padding">8dp</dimen>
+    <dimen name="place_details__card_inside_margin">20dp</dimen>
+    <dimen name="btn_add_to_favourite_margin_top">20dp</dimen>
+    <dimen name="btn_add_to_favourite_margin_end">20dp</dimen>
+    <dimen name="tv_detail_place_name_text_size">22sp</dimen>
+    <dimen name="tv_detail_place_name_margin_top">28dp</dimen>
+    <dimen name="tv_detail_place_name_margin_start">24dp</dimen>
+    <dimen name="tv_detail_place_name_margin_end">24dp</dimen>
+    <dimen name="place_details__rating_margin_top">16dp</dimen>
+    <dimen name="place_details__rating_margin_start">24sp</dimen>
+    <dimen name="place_details__total_reviews_margin_start">16dp</dimen>
+    <dimen name="place_details__total_reviews_margin_end">24dp</dimen>
+    <dimen name="tv_detail_place_vicinity_margin_top">16dp</dimen>
+    <dimen name="tv_detail_place_vicinity_margin_start">24dp</dimen>
+    <dimen name="tv_detail_place_vicinity_margin_end">24dp</dimen>
+    <dimen name="tv_detail_place_vicinity_drawable_padding">8dp</dimen>
+    <dimen name="places__recycler_view_places_margin_top">5dp</dimen>
+    <dimen name="loading_margin_top">5dp</dimen>
+    <dimen name="place_item_margin_end">8dp</dimen>
+    <dimen name="place_item_margin_start">8dp</dimen>
+    <dimen name="place_item_margin_top">5dp</dimen>
+    <dimen name="place_item_margin_bottom">5dp</dimen>
+    <dimen name="place_item_linear_padding">15dp</dimen>
+    <dimen name="loading_width">100dp</dimen>
+    <dimen name="loading_height">100dp</dimen>
 </resources>

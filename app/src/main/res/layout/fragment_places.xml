@@ -15,7 +15,7 @@
                 android:id="@+id/recycler_view_places"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingBottom="5dp"
+                android:paddingBottom="@dimen/places__recycler_view_places_margin_top"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"

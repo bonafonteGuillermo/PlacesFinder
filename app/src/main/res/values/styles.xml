@@ -19,5 +19,26 @@
     <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
         <item name="colorControlNormal">@color/white</item>
     </style>
+    <style name="PlaceDetailsNameTextView">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/tv_detail_place_name_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">@dimen/tv_detail_place_name_margin_top</item>
+        <item name="android:layout_marginStart">@dimen/tv_detail_place_name_margin_start</item>
+        <item name="android:layout_marginEnd">@dimen/tv_detail_place_name_margin_end</item>
+    </style>
+    <style name="PlaceDetailsTotalReviewsTextView">
+        <item name="android:textColor">@color/text_subtitle</item>
+        <item name="android:layout_marginStart">@dimen/place_details__total_reviews_margin_start</item>
+        <item name="android:layout_marginEnd">@dimen/place_details__total_reviews_margin_end</item>
+    </style>
+    <style name="PlaceDetailsVicinityTextView">
+        <item name="android:layout_marginTop">@dimen/tv_detail_place_vicinity_margin_top</item>
+        <item name="android:layout_marginStart">@dimen/tv_detail_place_vicinity_margin_start</item>
+        <item name="android:layout_marginEnd">@dimen/tv_detail_place_vicinity_margin_end</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:drawableStart">@drawable/place_details__ic_location</item>
+        <item name="android:drawablePadding">@dimen/tv_detail_place_vicinity_drawable_padding</item>
+    </style>
 
 </resources>

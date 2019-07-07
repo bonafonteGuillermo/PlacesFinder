@@ -11,7 +11,6 @@ import com.upsa.mimo.placesfinder.app.injector
 import com.upsa.mimo.placesfinder.model.Place
 import com.upsa.mimo.placesfinder.ui.favourites.adapter.FragmentViewPagerAdapter
 import com.upsa.mimo.placesfinder.ui.favourites.utils.CardTransformer
-import com.upsa.mimo.placesfinder.ui.favourites.utils.CustomViewPagerTransformer
 import kotlinx.android.synthetic.main.fragment_favourites.*
 
 class FavouritesFragment : Fragment(), IFavouritesView {

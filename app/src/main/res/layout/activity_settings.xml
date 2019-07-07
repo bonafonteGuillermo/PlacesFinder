@@ -6,8 +6,8 @@
         android:layout_width="match_parent" android:layout_height="match_parent"
         android:background="@color/screen_background"
         tools:context=".ui.settings.SettingsActivity"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
+        android:paddingStart="@dimen/settings__padding_start"
+        android:paddingEnd="@dimen/settings__padding_end"
         android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
@@ -25,14 +25,14 @@
             android:text="@string/settings__place_type_label"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:textColor="@color/colorSecondary"
-            android:layout_marginTop="40dp"/>
+            android:layout_marginTop="@dimen/settings__filter_type_label_margin_top"/>
 
     <RadioGroup
             android:id="@+id/settings__radio_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginBottom="8dp">
+            android:layout_marginBottom="@dimen/settings__radio_group_margin">
 
         <RadioButton android:id="@+id/settings__radio_museum"
                      android:layout_width="wrap_content"
@@ -40,7 +40,7 @@
                      android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                      android:textColor="@color/white"
                      android:buttonTint="@color/settings__radio_button_selector"
-                     android:layout_marginTop="30dp"
+                     android:layout_marginTop="@dimen/settings__radio_museum_margin_top"
                      tools:checked="true"
                      android:text="@string/settings__filter_type_museum"/>
 
@@ -50,7 +50,7 @@
                      android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                      android:textColor="@color/white"
                      android:buttonTint="@color/settings__radio_button_selector"
-                     android:layout_marginTop="20dp"
+                     android:layout_marginTop="@dimen/settings__radio_parking_margin_top"
                      android:text="@string/settings__filter_type_parking"/>
 
         <RadioButton android:id="@+id/settings__radio_restaurant"
@@ -59,7 +59,7 @@
                      android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                      android:textColor="@color/white"
                      android:buttonTint="@color/settings__radio_button_selector"
-                     android:layout_marginTop="20dp"
+                     android:layout_marginTop="@dimen/settings__radio_restaurant_margin_top"
                      android:text="@string/settings__filter_type_restaurant"/>
     </RadioGroup>
 
@@ -70,17 +70,17 @@
             android:text="@string/settings__place_radius_label"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:textColor="@color/colorSecondary"
-            android:layout_marginTop="40dp"/>
+            android:layout_marginTop="@dimen/settings__filter_radius_label_margin_top"/>
 
     <TextView
             android:id="@+id/settings__filter_seekbar_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="0"
-            android:padding="4dp"
+            android:padding="@dimen/settings__filter_seekbar_value_padding"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             android:textColor="@color/colorSecondary"
-            android:layout_marginTop="30dp"/>
+            android:layout_marginTop="@dimen/settings__filter_seekbar_value_margin_top"/>
 
     <SeekBar
             android:id="@+id/settings__seekbar_radius"
@@ -88,7 +88,6 @@
             android:layout_height="wrap_content"
             android:progressTint="@color/colorSecondary"
             android:thumbTint="@color/colorSecondary"
-            android:max="5000"
-            android:min="100"/>
+            android:max="5000"/>
 
 </LinearLayout>
